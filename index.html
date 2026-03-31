@@ -281,7 +281,7 @@ a { text-decoration: none; color: inherit; }
   background: #fff;
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 36px 28px;
+  padding: 20px 24px;
   text-align: left;
   transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
 }
@@ -290,14 +290,27 @@ a { text-decoration: none; color: inherit; }
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(124,58,237,0.1);
 }
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
 .card-icon {
-  font-size: 36px;
-  margin-bottom: 16px;
+  font-size: 32px;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-purple);
+  border-radius: 12px;
 }
 .card h3 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin: 0;
   color: var(--text-primary);
 }
 .card p {
@@ -685,18 +698,18 @@ a { text-decoration: none; color: inherit; }
     <p class="section-subtitle">超過 200,000 位創作者選擇 Portaly，最專業的那群人都有自己的網域</p>
     <div class="cards-grid">
       <div class="card">
-        <div class="card-icon">👑</div>
-        <h3>品牌辨識度飆升</h3>
+        <div class="card-header"><div class="card-icon">👑</div>
+        <h3>品牌辨識度飆升</h3></div>
         <p>yourname.tw 比 portaly.cc/yourname 更好記、更專業。品牌合作邀約看到自訂網域，信任度直接拉滿。</p>
       </div>
       <div class="card">
-        <div class="card-icon">📈</div>
-        <h3>SEO 搜尋加分</h3>
+        <div class="card-header"><div class="card-icon">📈</div>
+        <h3>SEO 搜尋加分</h3></div>
         <p>自有網域在搜尋引擎的權重更高。粉絲搜你的名字，直接找到你，不被其他創作者稀釋流量。</p>
       </div>
       <div class="card">
-        <div class="card-icon">🛡️</div>
-        <h3>你的流量你作主</h3>
+        <div class="card-header"><div class="card-icon">🛡️</div>
+        <h3>你的流量你作主</h3></div>
         <p>平台可能改規則，但網域是你的資產。不管未來用什麼工具，網域跟著你走，粉絲永遠找得到你。</p>
       </div>
     </div>
