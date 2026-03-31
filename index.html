@@ -427,7 +427,7 @@ a { text-decoration: none; color: inherit; }
   background: #fff;
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 32px 28px;
+  padding: 20px 24px;
   text-align: left;
   transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
 }
@@ -446,12 +446,18 @@ a { text-decoration: none; color: inherit; }
   font-size: 18px;
   font-weight: 800;
   border-radius: 50%;
-  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+.feature-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
 }
 .feature-card h3 {
   font-size: 18px;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin: 0;
   color: var(--text-primary);
 }
 .feature-card p {
@@ -761,23 +767,23 @@ a { text-decoration: none; color: inherit; }
     <h2 class="section-title">專為 Portaly 創作者設計</h2>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-num">①</div>
-        <h3>一鍵綁定 Portaly 頁面</h3>
+        <div class="feature-header"><div class="feature-num">①</div>
+        <h3>一鍵綁定 Portaly 頁面</h3></div>
         <p>購買後直接在 Portaly 後台設定自訂網域，不用懂技術，3 分鐘搞定</p>
       </div>
       <div class="feature-card">
-        <div class="feature-num">②</div>
-        <h3>行銷工具一起用</h3>
+        <div class="feature-header"><div class="feature-num">②</div>
+        <h3>行銷工具一起用</h3></div>
         <p>lihi 的短網址、AB 測試、UTM 追蹤，搭配 Portaly 的頁面，數據更清楚</p>
       </div>
       <div class="feature-card">
-        <div class="feature-num">③</div>
-        <h3>可開統編發票</h3>
+        <div class="feature-header"><div class="feature-num">③</div>
+        <h3>可開統編發票</h3></div>
         <p>接品牌合作需要報帳？lihi 提供台灣正式發票，費用核銷不用煩</p>
       </div>
       <div class="feature-card">
-        <div class="feature-num">④</div>
-        <h3>在地團隊即時支援</h3>
+        <div class="feature-header"><div class="feature-num">④</div>
+        <h3>在地團隊即時支援</h3></div>
         <p>台灣團隊、中文客服，有問題不用翻牆找英文文件，真人快速回覆</p>
       </div>
     </div>
