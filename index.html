@@ -15,8 +15,8 @@
 html { scroll-behavior: smooth; color-scheme: light only; }
 body {
   font-family: 'Inter', 'Noto Sans TC', sans-serif;
-  color: #1E293B;
-  background: #FFFFFF;
+  color: var(--text-primary);
+  background: var(--bg-white);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -27,16 +27,20 @@ a { text-decoration: none; color: inherit; }
 /* ===== VARIABLES ===== */
 :root {
   --purple: #7C3AED;
-  --purple-dark: #6D28D9;
+  --purple-dark: #5B21B6;
+  --purple-deeper: #3B0764;
   --green: #10B981;
+  --green-light: #34D399;
+  --bg-hero: linear-gradient(160deg, #1E0A3C 0%, #2D1B69 50%, #1A0E35 100%);
   --bg-white: #FFFFFF;
   --bg-light: #F8FAFC;
-  --bg-purple: #F5F3FF;
+  --bg-purple-soft: #F5F3FF;
   --text-primary: #1E293B;
   --text-secondary: #64748B;
+  --text-on-dark: #F1F5F9;
+  --text-muted-dark: rgba(241,245,249,0.6);
   --border: #E2E8F0;
-  --hero-dark: #1E0A3C;
-  --hero-mid: #2D1B69;
+  --border-purple: rgba(124,58,237,0.2);
 }
 
 /* ===== UTILITIES ===== */
@@ -74,88 +78,17 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ===== ANIMATE ON SCROLL ===== */
-.animate-in {
+[data-animate] {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(24px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-.animate-in.visible {
+[data-animate].visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ===== FLOATING DECORATIONS ===== */
-@keyframes floatUp {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-@keyframes floatSlow {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(5deg); }
-}
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(124,58,237,0.4); }
-  50% { box-shadow: 0 0 20px 10px rgba(124,58,237,0.15); }
-}
-
-.floating-decor {
-  position: absolute;
-  pointer-events: none;
-  z-index: 1;
-}
-.floating-decor.dot-purple {
-  width: 8px; height: 8px;
-  background: var(--purple);
-  border-radius: 50%;
-  opacity: 0.5;
-  animation: floatUp 4s ease-in-out infinite;
-}
-.floating-decor.dot-green {
-  width: 6px; height: 6px;
-  background: var(--green);
-  border-radius: 50%;
-  opacity: 0.4;
-  animation: floatSlow 5s ease-in-out infinite;
-}
-.floating-decor.star {
-  font-size: 16px;
-  opacity: 0.4;
-  animation: floatUp 3.5s ease-in-out infinite;
-}
-
-/* ===== GRID TEXTURE ===== */
-.grid-texture {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ===== GLOW ORBS ===== */
-.glow-orb {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-}
-.glow-orb.purple-big {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(124,58,237,0.3) 0%, transparent 70%);
-  filter: blur(120px);
-  top: -100px; right: -100px;
-}
-.glow-orb.green-small {
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%);
-  filter: blur(100px);
-  bottom: -50px; left: -100px;
-}
-
-/* ===== SECTION 1: NAV ===== */
+/* ===== NAV ===== */
 .nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -165,9 +98,9 @@ a { text-decoration: none; color: inherit; }
   border-bottom: 1px solid transparent;
 }
 .nav.scrolled {
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom-color: var(--border);
   box-shadow: 0 1px 8px rgba(0,0,0,0.04);
 }
@@ -185,7 +118,6 @@ a { text-decoration: none; color: inherit; }
 }
 .nav.scrolled .nav-logo { color: var(--text-primary); }
 .nav-logo span { color: var(--purple); }
-.nav.scrolled .nav-logo span { color: var(--purple); }
 .nav-cta {
   display: inline-block;
   padding: 10px 24px;
@@ -203,28 +135,45 @@ a { text-decoration: none; color: inherit; }
   box-shadow: 0 4px 16px rgba(124,58,237,0.3);
 }
 
-/* ===== SECTION 2: HERO ===== */
+/* ===== HERO ===== */
 .hero {
   position: relative;
-  background: linear-gradient(160deg, var(--hero-dark), var(--hero-mid));
-  padding: 120px 0 100px;
+  background: linear-gradient(160deg, #1E0A3C 0%, #2D1B69 50%, #1A0E35 100%);
+  padding: 140px 0 120px;
   text-align: center;
   overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -150px; left: -150px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
 }
 .hero .container { position: relative; z-index: 2; }
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(8px);
+  background: rgba(124,58,237,0.25);
   color: #fff;
   font-size: 14px;
   font-weight: 600;
   padding: 8px 20px;
   border-radius: 100px;
   margin-bottom: 24px;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid var(--border-purple);
 }
 .hero-badge .dot {
   width: 8px; height: 8px;
@@ -242,31 +191,34 @@ a { text-decoration: none; color: inherit; }
   margin-right: auto;
   color: #fff;
 }
+.hero h1 .gradient-text {
+  -webkit-text-fill-color: transparent;
+}
 .hero-sub {
   font-size: 18px;
-  color: rgba(255,255,255,0.75);
+  color: var(--text-muted-dark);
   margin-bottom: 28px;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.7;
 }
-.search-box {
+/* Hero search box — dark style */
+.hero .search-box {
   display: flex;
   max-width: 600px;
   margin: 0 auto;
-  background: #fff;
-  border: 2px solid transparent;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 100px;
   overflow: hidden;
   transition: border-color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
 }
-.search-box:focus-within {
+.hero .search-box:focus-within {
   border-color: var(--purple);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2), 0 0 0 4px rgba(124,58,237,0.2);
+  box-shadow: 0 0 0 4px rgba(124,58,237,0.25);
 }
-.search-box input {
+.hero .search-box input {
   flex: 1;
   border: none;
   outline: none;
@@ -275,9 +227,9 @@ a { text-decoration: none; color: inherit; }
   font-family: inherit;
   background: transparent;
   min-width: 0;
-  color: var(--text-primary);
+  color: #fff;
 }
-.search-box input::placeholder { color: #94A3B8; }
+.hero .search-box input::placeholder { color: rgba(255,255,255,0.45); }
 .search-btn {
   background: linear-gradient(135deg, var(--purple), var(--green));
   color: #fff;
@@ -294,21 +246,16 @@ a { text-decoration: none; color: inherit; }
   transform: translateY(-1px);
   box-shadow: 0 4px 16px rgba(124,58,237,0.3);
 }
-
-/* Hero wave */
-.hero-wave {
+/* Hero fade to white */
+.hero-fade {
   position: absolute;
-  bottom: -2px; left: 0; right: 0;
-  z-index: 1;
-  line-height: 0;
-}
-.hero-wave svg {
-  display: block;
-  width: 100%;
+  bottom: 0; left: 0; right: 0;
   height: 80px;
+  background: linear-gradient(transparent, #FFFFFF);
+  z-index: 1;
 }
 
-/* ===== SECTION 3: DISCOUNT ===== */
+/* ===== DISCOUNT ===== */
 .discount {
   padding: 40px 0 24px;
   background: var(--bg-white);
@@ -316,35 +263,22 @@ a { text-decoration: none; color: inherit; }
 .discount-card {
   max-width: 680px;
   margin: 0 auto;
-  background: linear-gradient(135deg, #F5F3FF, #ECFDF5);
+  background: #fff;
   border-radius: 20px;
   padding: 32px;
   text-align: center;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(124,58,237,0.1);
+  border: 1px solid var(--border-purple);
 }
-/* Decorative dots & stars */
-.discount-card .decor-dot {
+/* Top gradient bar */
+.discount-card::before {
+  content: '';
   position: absolute;
-  width: 6px; height: 6px;
-  background: var(--purple);
-  border-radius: 50%;
-  opacity: 0.3;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--purple), var(--green), var(--purple));
 }
-.discount-card .decor-dot:nth-child(1) { top: 20px; left: 30px; }
-.discount-card .decor-dot:nth-child(2) { top: 40px; right: 50px; width: 8px; height: 8px; }
-.discount-card .decor-dot:nth-child(3) { bottom: 30px; left: 60px; width: 5px; height: 5px; }
-.discount-card .decor-star {
-  position: absolute;
-  font-size: 14px;
-  opacity: 0.35;
-  animation: floatUp 3s ease-in-out infinite;
-}
-.discount-card .decor-star:nth-of-type(1) { top: 15px; right: 25px; animation-delay: 0s; }
-.discount-card .decor-star:nth-of-type(2) { bottom: 20px; right: 80px; animation-delay: 1s; }
-.discount-card .decor-star:nth-of-type(3) { top: 50%; left: 20px; animation-delay: 0.5s; }
-
 .discount-label {
   font-size: 16px;
   font-weight: 600;
@@ -370,11 +304,11 @@ a { text-decoration: none; color: inherit; }
   letter-spacing: 2px;
   position: relative;
   z-index: 1;
-  animation: pulse-glow 2.5s ease-in-out infinite;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.3), 0 0 40px rgba(16,185,129,0.15);
 }
 .discount-code:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+  box-shadow: 0 8px 30px rgba(124,58,237,0.4), 0 0 60px rgba(16,185,129,0.2);
 }
 .discount-code .copy-icon { font-size: 18px; }
 .discount-price {
@@ -384,10 +318,10 @@ a { text-decoration: none; color: inherit; }
   position: relative; z-index: 1;
 }
 .discount-price .price {
-  font-size: 48px;
+  font-size: 40px;
   font-weight: 900;
   color: var(--green);
-  text-shadow: 0 0 20px rgba(16,185,129,0.2);
+  text-shadow: 0 0 24px rgba(16,185,129,0.3), 0 0 48px rgba(16,185,129,0.1);
 }
 .discount-price .original {
   color: var(--text-secondary);
@@ -396,98 +330,63 @@ a { text-decoration: none; color: inherit; }
   margin-left: 8px;
 }
 
-/* ===== SECTION 4: WHY CUSTOM DOMAIN — Alternating ===== */
+/* ===== WHY SECTION ===== */
 .why {
   padding: 80px 0;
   background: var(--bg-white);
   text-align: center;
 }
-.why-row {
-  display: flex;
-  align-items: center;
-  gap: 60px;
-  margin-top: 48px;
-  text-align: left;
+.why-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
 }
-.why-row.reverse { flex-direction: row-reverse; }
-.why-row + .why-row { margin-top: 64px; }
-.why-text { flex: 1; }
-.why-text .card-icon {
+.why-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--purple);
+  border-radius: 0 16px 16px 0;
+  padding: 32px 28px;
+  text-align: left;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.why-card:nth-child(1) { border-left-color: #7C3AED; }
+.why-card:nth-child(2) { border-left-color: #8B5CF6; }
+.why-card:nth-child(3) { border-left-color: #10B981; }
+.why-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(124,58,237,0.12);
+}
+.why-card .card-icon {
   font-size: 32px;
   width: 56px; height: 56px;
   display: flex; align-items: center; justify-content: center;
-  background: var(--bg-purple);
   border-radius: 14px;
   margin-bottom: 16px;
 }
-.why-text h3 {
-  font-size: 22px;
+.why-card:nth-child(1) .card-icon { background: rgba(124,58,237,0.1); }
+.why-card:nth-child(2) .card-icon { background: rgba(139,92,246,0.1); }
+.why-card:nth-child(3) .card-icon { background: rgba(16,185,129,0.1); }
+.why-card h3 {
+  font-size: 20px;
   font-weight: 800;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   color: var(--text-primary);
 }
-.why-text p {
-  font-size: 16px;
+.why-card p {
+  font-size: 15px;
   color: var(--text-secondary);
   line-height: 1.8;
-  max-width: 420px;
 }
-.why-image {
-  flex: 1;
-  border-radius: 16px;
-  overflow: hidden;
-  position: relative;
-  min-height: 220px;
-}
-/* CSS placeholder images */
-.why-placeholder {
-  width: 100%;
-  height: 100%;
-  min-height: 220px;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 32px;
-  position: relative;
-}
-.why-placeholder.brand {
-  background: linear-gradient(135deg, #EDE9FE, #D1FAE5);
-}
-.why-placeholder.seo {
-  background: linear-gradient(135deg, #DBEAFE, #EDE9FE);
-}
-.why-placeholder.tracking {
-  background: linear-gradient(135deg, #D1FAE5, #FEF3C7);
-}
-.why-placeholder .ph-icon { font-size: 48px; }
-.why-placeholder .ph-text {
-  font-size: 14px; font-weight: 600;
-  color: var(--text-secondary);
-  text-align: center;
-}
-.why-placeholder .ph-bar {
-  width: 80%; height: 8px;
-  background: rgba(124,58,237,0.15);
-  border-radius: 4px;
-}
-.why-placeholder .ph-bar.short { width: 50%; }
 
-/* ===== SECTION 5: BEFORE/AFTER ===== */
+/* ===== COMPARE / BEFORE-AFTER ===== */
 .compare {
   padding: 80px 0;
   background: var(--bg-light);
   text-align: center;
   position: relative;
   overflow: hidden;
-}
-.compare .glow-orb.purple-corner {
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%);
-  filter: blur(80px);
-  top: -100px; left: -100px;
 }
 .browser-grid {
   display: flex;
@@ -511,6 +410,7 @@ a { text-decoration: none; color: inherit; }
   border-radius: 50%;
   background: linear-gradient(135deg, var(--purple), var(--green));
   color: #fff;
+  box-shadow: 0 4px 16px rgba(124,58,237,0.3);
 }
 .browser-mockup {
   border-radius: 12px;
@@ -557,17 +457,17 @@ a { text-decoration: none; color: inherit; }
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-/* Simulated Portaly page inside browser */
+/* Browser page content — CSS fake page */
 .browser-page {
   padding: 24px;
-  min-height: 200px;
+  min-height: 220px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
 }
 .browser-page .avatar {
-  width: 48px; height: 48px;
+  width: 64px; height: 64px;
   border-radius: 50%;
   background: linear-gradient(135deg, #C4B5FD, #A78BFA);
 }
@@ -576,22 +476,29 @@ a { text-decoration: none; color: inherit; }
   font-weight: 800;
   color: var(--text-primary);
 }
-.browser-page .bio {
-  font-size: 11px;
-  color: var(--text-secondary);
+.browser-page .bio-bar {
+  width: 120px; height: 8px;
+  background: #E2E8F0;
+  border-radius: 4px;
 }
 .browser-page .link-btn {
   width: 85%;
-  padding: 8px;
+  padding: 10px;
   border-radius: 8px;
   font-size: 12px;
   font-weight: 600;
   text-align: center;
   color: #fff;
+  background: #94A3B8;
 }
-.browser-page .link-btn:nth-child(4) { background: var(--purple); }
-.browser-page .link-btn:nth-child(5) { background: var(--green); }
-.browser-page .link-btn:nth-child(6) { background: #F59E0B; }
+/* Before browser: gray buttons */
+.browser-mockup:not(.after) .link-btn:nth-child(4) { background: #94A3B8; }
+.browser-mockup:not(.after) .link-btn:nth-child(5) { background: #A1A1AA; }
+.browser-mockup:not(.after) .link-btn:nth-child(6) { background: #B0B0BA; }
+/* After browser: purple buttons */
+.browser-mockup.after .link-btn:nth-child(4) { background: var(--purple); }
+.browser-mockup.after .link-btn:nth-child(5) { background: var(--purple-dark); }
+.browser-mockup.after .link-btn:nth-child(6) { background: #9333EA; }
 .browser-mockup.after .name {
   background: linear-gradient(135deg, var(--purple), var(--green));
   -webkit-background-clip: text;
@@ -609,91 +516,55 @@ a { text-decoration: none; color: inherit; }
   font-weight: 700;
 }
 
-/* ===== SECTION 6: FOR CREATORS — Mixed Layout ===== */
+/* ===== CREATORS — Vertical merged cards ===== */
 .creators {
   padding: 80px 0;
   background: var(--bg-white);
   text-align: center;
 }
-/* Large full-width cards */
-.creator-big {
+.creator-stack {
   display: flex;
-  align-items: center;
-  gap: 48px;
+  flex-direction: column;
+  max-width: 700px;
+  margin: 40px auto 0;
   border-radius: 20px;
-  padding: 40px;
-  margin-top: 32px;
-  text-align: left;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #fff;
 }
-.creator-big.bg-purple { background: linear-gradient(135deg, #F5F3FF, #FFFFFF); }
-.creator-big.bg-green { background: linear-gradient(135deg, #ECFDF5, #FFFFFF); }
-.creator-big.reverse { flex-direction: row-reverse; }
-.creator-big-text { flex: 1; }
-.creator-big-text .big-icon { font-size: 48px; margin-bottom: 12px; }
-.creator-big-text .feature-num-inline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px; height: 32px;
-  background: linear-gradient(135deg, var(--purple), var(--green));
-  color: #fff;
-  font-size: 14px;
-  font-weight: 800;
-  border-radius: 50%;
-  margin-right: 8px;
-  vertical-align: middle;
-}
-.creator-big-text h3 {
-  font-size: 22px;
-  font-weight: 800;
-  margin-bottom: 10px;
-  color: var(--text-primary);
-}
-.creator-big-text p {
-  font-size: 16px;
-  color: var(--text-secondary);
-  line-height: 1.8;
-}
-.creator-big-image {
-  flex: 1;
-  min-height: 180px;
-  border-radius: 14px;
+.creator-item {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 24px;
-}
-.creator-big-image.purple-bg { background: linear-gradient(135deg, #EDE9FE, #DDD6FE); }
-.creator-big-image.green-bg { background: linear-gradient(135deg, #D1FAE5, #A7F3D0); }
-.creator-big-image .img-icon { font-size: 64px; }
-
-/* Small cards row */
-.creator-smalls {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-top: 24px;
-}
-.creator-small {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px 24px;
+  gap: 20px;
+  padding: 28px 32px;
   text-align: left;
-  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+  cursor: default;
 }
-.creator-small:hover {
-  border-color: var(--purple);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(124,58,237,0.1);
+.creator-item:last-child {
+  border-bottom: none;
 }
-.creator-small .sm-icon { font-size: 40px; margin-bottom: 12px; }
-.creator-small h3 {
-  font-size: 18px; font-weight: 700;
-  margin-bottom: 8px;
+.creator-item:hover {
+  background: var(--bg-purple-soft);
+}
+.creator-item .cr-icon {
+  font-size: 36px;
+  flex-shrink: 0;
+  width: 56px; height: 56px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(124,58,237,0.08);
+  border-radius: 14px;
+}
+.creator-item .cr-text { flex: 1; }
+.creator-item .cr-text h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text-primary);
   display: flex; align-items: center; gap: 8px;
 }
-.creator-small h3 .feature-num-inline {
+.creator-item .cr-text h3 .feature-num {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -705,13 +576,13 @@ a { text-decoration: none; color: inherit; }
   border-radius: 50%;
   flex-shrink: 0;
 }
-.creator-small p {
+.creator-item .cr-text p {
   font-size: 15px;
   color: var(--text-secondary);
   line-height: 1.7;
 }
 
-/* ===== SECTION 7: COMPARISON TABLE ===== */
+/* ===== COMPARISON TABLE ===== */
 .comparison {
   padding: 80px 0;
   background: var(--bg-light);
@@ -732,7 +603,7 @@ a { text-decoration: none; color: inherit; }
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--purple), var(--green));
+  background: linear-gradient(90deg, var(--purple), var(--green), var(--purple));
   z-index: 1;
 }
 .comparison-table table {
@@ -757,9 +628,8 @@ a { text-decoration: none; color: inherit; }
   text-align: left;
   font-weight: 600;
 }
-/* lihi column highlight */
 .comparison-table td:nth-child(2) {
-  background: #FAF5FF;
+  background: rgba(124,58,237,0.04);
 }
 .comparison-table th:nth-child(2) {
   background: linear-gradient(135deg, #6D28D9, #7C3AED);
@@ -768,8 +638,8 @@ a { text-decoration: none; color: inherit; }
 .comparison-table tbody tr {
   transition: background 0.2s;
 }
-.comparison-table tbody tr:hover {
-  background: rgba(124,58,237,0.04);
+.comparison-table tbody tr:hover td {
+  background: var(--bg-purple-soft);
 }
 .comparison-table tbody tr:hover td:nth-child(2) {
   background: rgba(124,58,237,0.08);
@@ -786,32 +656,47 @@ a { text-decoration: none; color: inherit; }
   vertical-align: middle;
   letter-spacing: 0.5px;
 }
-.icon-check {
+/* CSS check/cross icons */
+.icon-check, .icon-cross {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 28px; height: 28px;
-  background: var(--green);
   border-radius: 50%;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
+  position: relative;
+}
+.icon-check {
+  background: var(--green);
+}
+.icon-check::before {
+  content: '';
+  width: 7px; height: 12px;
+  border: solid #fff;
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+  margin-top: -2px;
 }
 .icon-cross {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px; height: 28px;
   background: #E2E8F0;
-  border-radius: 50%;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
+}
+.icon-cross::before {
+  content: '';
+  width: 12px; height: 2.5px;
+  background: #fff;
+  position: absolute;
+  transform: rotate(45deg);
+}
+.icon-cross::after {
+  content: '';
+  width: 12px; height: 2.5px;
+  background: #fff;
+  position: absolute;
+  transform: rotate(-45deg);
 }
 .check-price { color: var(--green); font-weight: 700; font-size: 16px; }
 .partial { color: var(--text-secondary); font-size: 14px; }
 
-/* ===== SECTION 8: STEPS ===== */
+/* ===== STEPS ===== */
 .steps {
   padding: 80px 0;
   background: var(--bg-white);
@@ -825,7 +710,7 @@ a { text-decoration: none; color: inherit; }
   margin: 40px auto 0;
   position: relative;
 }
-/* Gradient line with arrows */
+/* Gradient solid line */
 .steps-grid::before {
   content: '';
   position: absolute;
@@ -836,20 +721,6 @@ a { text-decoration: none; color: inherit; }
   background: linear-gradient(90deg, var(--purple), var(--green));
   z-index: 0;
   border-radius: 2px;
-}
-.steps-grid::after {
-  content: '›';
-  position: absolute;
-  top: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 24px;
-  font-weight: 900;
-  background: linear-gradient(135deg, var(--purple), var(--green));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  z-index: 1;
 }
 .step {
   position: relative;
@@ -866,84 +737,53 @@ a { text-decoration: none; color: inherit; }
   font-size: 24px;
   font-weight: 900;
   border-radius: 50%;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   position: relative;
   z-index: 2;
-}
-/* Phone mockup */
-.step-phone {
-  width: 140px;
-  margin: 0 auto 16px;
-  background: #fff;
-  border: 2px solid var(--border);
-  border-radius: 16px;
-  padding: 8px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-}
-.step-phone-notch {
-  width: 40px; height: 4px;
-  background: var(--border);
-  border-radius: 2px;
-  margin: 0 auto 8px;
-}
-.step-phone-body {
-  background: var(--bg-light);
-  border-radius: 8px;
-  padding: 12px 8px;
-  min-height: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-.step-phone-body .ph-bar {
-  width: 80%; height: 6px;
-  background: rgba(124,58,237,0.15);
-  border-radius: 3px;
-}
-.step-phone-body .ph-bar.green { background: rgba(16,185,129,0.2); }
-.step-phone-body .ph-bar.short { width: 50%; }
-.step-phone-body .ph-btn {
-  width: 70%; height: 16px;
-  background: linear-gradient(135deg, var(--purple), var(--green));
-  border-radius: 8px;
+  box-shadow: 0 0 0 6px #fff, 0 0 0 8px rgba(124,58,237,0.2);
 }
 .step h3 {
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 8px;
 }
-.step p {
+.step > p {
   font-size: 14px;
   color: var(--text-secondary);
   line-height: 1.6;
   max-width: 240px;
   margin: 0 auto;
 }
+.step-detail {
+  margin: 12px auto 0;
+  max-width: 220px;
+  background: var(--bg-purple-soft);
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--purple-dark);
+  font-weight: 500;
+  line-height: 1.5;
+}
 
-/* ===== SECTION 9: FINAL CTA ===== */
+/* ===== FINAL CTA ===== */
 .final-cta {
   position: relative;
-  background: linear-gradient(160deg, var(--hero-dark), var(--hero-mid));
+  background: linear-gradient(160deg, #1E0A3C 0%, #2D1B69 50%, #1A0E35 100%);
   padding: 80px 0;
   text-align: center;
   overflow: hidden;
 }
-.final-cta .container { position: relative; z-index: 2; }
-/* Wave top for CTA */
-.cta-wave-top {
+.final-cta::before {
+  content: '';
   position: absolute;
-  top: -2px; left: 0; right: 0;
-  z-index: 1;
-  line-height: 0;
-  transform: scaleY(-1);
+  top: -100px; right: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
 }
-.cta-wave-top svg {
-  display: block;
-  width: 100%;
-  height: 60px;
-}
+.final-cta .container { position: relative; z-index: 2; }
 .final-cta h2 {
   font-size: 36px;
   font-weight: 800;
@@ -952,20 +792,44 @@ a { text-decoration: none; color: inherit; }
 }
 .final-cta .cta-sub {
   font-size: 18px;
-  color: rgba(255,255,255,0.75);
+  color: var(--text-muted-dark);
   margin-bottom: 28px;
 }
-.final-cta .cta-sub .code { color: var(--green); font-weight: 700; }
+.final-cta .cta-sub .code { color: var(--green-light); font-weight: 700; }
+/* CTA search box — same as hero dark style */
 .final-cta .search-box {
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 100px;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
+.final-cta .search-box:focus-within {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 4px rgba(124,58,237,0.25);
+}
+.final-cta .search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 16px 20px;
+  font-size: 16px;
+  font-family: inherit;
+  background: transparent;
+  min-width: 0;
+  color: #fff;
+}
+.final-cta .search-box input::placeholder { color: rgba(255,255,255,0.45); }
 .final-cta .cta-note {
   margin-top: 20px;
   font-size: 14px;
   color: rgba(255,255,255,0.55);
 }
 
-/* ===== SECTION 10: FOOTER ===== */
+/* ===== FOOTER ===== */
 .footer {
   padding: 32px 0;
   background: var(--bg-white);
@@ -979,71 +843,82 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 1023px) {
   .hero h1 { font-size: 36px; }
   .section-title { font-size: 30px; }
-  .why-row { gap: 32px; }
-  .why-text h3 { font-size: 20px; }
-  .creator-big { gap: 32px; padding: 28px; }
+  .why-cards { grid-template-columns: 1fr; max-width: 600px; margin-left: auto; margin-right: auto; }
   .steps-grid { grid-template-columns: repeat(2, 1fr); }
-  .steps-grid::before, .steps-grid::after { display: none; }
+  .steps-grid::before { display: none; }
 }
 @media (max-width: 767px) {
-  .hero { padding: 100px 0 80px; }
+  .hero { padding: 110px 0 100px; }
   .hero h1 { font-size: 28px; }
   .hero-sub { font-size: 16px; }
   .section-title { font-size: 26px; }
   .section-subtitle { font-size: 16px; }
-  .search-box {
+  /* Hero search stacks */
+  .hero .search-box,
+  .final-cta .search-box {
     flex-direction: column;
     border-radius: 20px;
   }
-  .search-box input {
-    border-bottom: 1px solid var(--border);
+  .hero .search-box input,
+  .final-cta .search-box input {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
     padding: 14px 16px;
   }
   .search-btn {
     padding: 14px;
     border-radius: 0;
   }
-  /* Why rows stack */
-  .why-row, .why-row.reverse {
-    flex-direction: column-reverse;
-    gap: 24px;
-    text-align: center;
-  }
-  .why-text p { max-width: 100%; }
   /* Browser grid stack */
   .browser-grid { flex-direction: column; gap: 16px; }
   .browser-arrow { transform: rotate(90deg); }
   .browser-mockup.after { transform: scale(1); }
-  /* Creator sections */
-  .creator-big, .creator-big.reverse {
-    flex-direction: column;
-    padding: 24px;
-    gap: 24px;
-    text-align: center;
-  }
-  .creator-smalls { grid-template-columns: 1fr; }
-  /* Steps */
+  /* Steps vertical + gradient line */
   .steps-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 0;
+    padding-left: 40px;
+    position: relative;
   }
-  .steps-grid::before, .steps-grid::after { display: none; }
+  .steps-grid::before {
+    display: block;
+    top: 0; bottom: 0;
+    left: 20px; right: auto;
+    width: 3px; height: auto;
+    background: linear-gradient(180deg, var(--purple), var(--green));
+  }
+  .step {
+    text-align: left;
+    padding: 24px 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0 16px;
+  }
+  .step-num {
+    width: 48px; height: 48px;
+    font-size: 18px;
+    margin-bottom: 0;
+    margin-left: -44px;
+    box-shadow: 0 0 0 4px #fff, 0 0 0 6px rgba(124,58,237,0.2);
+  }
+  .step h3 { flex: 1; padding-top: 10px; }
+  .step > p { max-width: 100%; margin: 8px 0 0 0; width: 100%; }
+  .step-detail { margin: 8px 0 0; max-width: 100%; }
   /* Discount */
   .discount-card { padding: 24px 16px; }
   .discount-code { font-size: 20px; padding: 10px 24px; }
-  .discount-price .price { font-size: 36px; }
+  .discount-price .price { font-size: 32px; }
   .nav-logo { font-size: 16px; }
   .comparison-table th,
   .comparison-table td { padding: 12px 10px; font-size: 13px; }
   .final-cta h2 { font-size: 28px; }
-  .glow-orb.purple-big { width: 300px; height: 300px; }
-  .glow-orb.green-small { width: 250px; height: 250px; }
+  .creator-item { padding: 20px 16px; }
 }
 </style>
 </head>
 <body>
 
-<!-- Section 1: Nav Bar -->
+<!-- Nav Bar -->
 <nav class="nav" id="navbar">
   <div class="container nav-inner">
     <div class="nav-logo">Portaly <span>×</span> lihi.io</div>
@@ -1051,20 +926,8 @@ a { text-decoration: none; color: inherit; }
   </div>
 </nav>
 
-<!-- Section 2: Hero -->
+<!-- Hero -->
 <section class="hero" id="hero-section">
-  <!-- Glow orbs -->
-  <div class="glow-orb purple-big"></div>
-  <div class="glow-orb green-small"></div>
-  <!-- Grid texture -->
-  <div class="grid-texture"></div>
-  <!-- Floating decorations -->
-  <div class="floating-decor dot-purple" style="top:20%;left:8%;animation-delay:0s;"></div>
-  <div class="floating-decor dot-green" style="top:60%;right:12%;animation-delay:1.5s;"></div>
-  <div class="floating-decor star" style="top:15%;right:18%;animation-delay:0.5s;">✦</div>
-  <div class="floating-decor star" style="bottom:25%;left:15%;animation-delay:2s;">✧</div>
-  <div class="floating-decor dot-purple" style="bottom:35%;right:8%;animation-delay:1s;width:10px;height:10px;"></div>
-
   <div class="container">
     <div class="hero-badge"><span class="dot"></span> Portaly 創作者專屬</div>
     <h1>你的品牌頁面，值得一個<span class="gradient-text">專屬網域</span></h1>
@@ -1075,27 +938,13 @@ a { text-decoration: none; color: inherit; }
       <button type="submit" class="search-btn">查詢網域</button>
     </form>
   </div>
-
-  <!-- Wave transition -->
-  <div class="hero-wave">
-    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-      <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z" fill="#FFFFFF"/>
-    </svg>
-  </div>
+  <div class="hero-fade"></div>
 </section>
 
-<!-- Section 3: Discount -->
+<!-- Discount -->
 <section class="discount">
   <div class="container">
-    <div class="discount-card animate-in">
-      <!-- Decorative elements -->
-      <div class="decor-dot"></div>
-      <div class="decor-dot"></div>
-      <div class="decor-dot"></div>
-      <span class="decor-star">✨</span>
-      <span class="decor-star">✨</span>
-      <span class="decor-star">✦</span>
-
+    <div class="discount-card" data-animate>
       <div class="discount-label">🏷️ Portaly 創作者限定</div>
       <p style="font-size:14px;color:var(--text-secondary);margin-bottom:8px;position:relative;z-index:1;">結帳時輸入折扣碼</p>
       <button class="discount-code" id="copyCode" onclick="copyDiscount()">
@@ -1110,73 +959,38 @@ a { text-decoration: none; color: inherit; }
   </div>
 </section>
 
-<!-- Section 4: Why Custom Domain — Alternating Layout -->
+<!-- Why Custom Domain -->
 <section class="why">
   <div class="container">
     <div class="section-label">WHY CUSTOM DOMAIN</div>
     <h2 class="section-title">自訂網域，品牌升級的第一步</h2>
     <p class="section-subtitle">頂尖創作者都知道，專屬網域是經營個人品牌的基本配備</p>
-
-    <!-- Row 1: Text Left, Image Right -->
-    <div class="why-row animate-in">
-      <div class="why-text">
+    <div class="why-cards">
+      <div class="why-card" data-animate>
         <div class="card-icon">👑</div>
         <h3>品牌辨識度飆升</h3>
         <p>用自己的名字當網址，粉絲一眼就記住。品牌合作邀約看到專屬網域，專業感和信任度直接拉滿。</p>
       </div>
-      <div class="why-image">
-        <div class="why-placeholder brand">
-          <div class="ph-icon">👑</div>
-          <div class="ph-text">beckvegas.tw</div>
-          <div class="ph-bar"></div>
-          <div class="ph-bar short"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Row 2: Image Left, Text Right -->
-    <div class="why-row reverse animate-in">
-      <div class="why-text">
+      <div class="why-card" data-animate>
         <div class="card-icon">📈</div>
         <h3>SEO 搜尋加分</h3>
         <p>自有網域在搜尋引擎的權重更高。粉絲搜你的名字，直接找到你。</p>
       </div>
-      <div class="why-image">
-        <div class="why-placeholder seo">
-          <div class="ph-icon">📈</div>
-          <div class="ph-text">Google 搜尋排名 UP</div>
-          <div class="ph-bar"></div>
-          <div class="ph-bar short"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Row 3: Text Left, Image Right -->
-    <div class="why-row animate-in">
-      <div class="why-text">
+      <div class="why-card" data-animate>
         <div class="card-icon">🛡️</div>
         <h3>讓流量可以更完整被追蹤</h3>
         <p>搭配 lihi 短網址的 UTM 追蹤與數據分析，每一次點擊都看得到來源，行銷成效不再靠猜。</p>
-      </div>
-      <div class="why-image">
-        <div class="why-placeholder tracking">
-          <div class="ph-icon">🛡️</div>
-          <div class="ph-text">UTM 數據追蹤</div>
-          <div class="ph-bar"></div>
-          <div class="ph-bar short"></div>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Section 5: Before/After Compare -->
+<!-- Before/After Compare -->
 <section class="compare">
-  <div class="glow-orb purple-corner"></div>
   <div class="container" style="position:relative;z-index:1;">
     <div class="section-label">BEFORE & AFTER</div>
     <h2 class="section-title">品牌升級前後對比</h2>
-    <div class="browser-grid animate-in">
+    <div class="browser-grid" data-animate>
       <!-- Before -->
       <div class="browser-col">
         <div class="browser-mockup">
@@ -1187,7 +1001,7 @@ a { text-decoration: none; color: inherit; }
           <div class="browser-page">
             <div class="avatar"></div>
             <div class="name">beckvegas</div>
-            <div class="bio">portaly.cc/beckvegas</div>
+            <div class="bio-bar"></div>
             <div class="link-btn">我的 YouTube 頻道</div>
             <div class="link-btn">Instagram</div>
             <div class="link-btn">合作邀約</div>
@@ -1209,7 +1023,7 @@ a { text-decoration: none; color: inherit; }
           <div class="browser-page">
             <div class="avatar"></div>
             <div class="name">beckvegas</div>
-            <div class="bio">beckvegas.tw</div>
+            <div class="bio-bar"></div>
             <div class="link-btn">我的 YouTube 頻道</div>
             <div class="link-btn">Instagram</div>
             <div class="link-btn">合作邀約</div>
@@ -1221,59 +1035,51 @@ a { text-decoration: none; color: inherit; }
   </div>
 </section>
 
-<!-- Section 6: For Portaly Creators — Mixed Layout -->
+<!-- For Portaly Creators — Vertical Merged Cards -->
 <section class="creators">
   <div class="container">
     <div class="section-label">FOR PORTALY CREATORS</div>
     <h2 class="section-title">專為 Portaly 創作者設計</h2>
-
-    <!-- Big Card 1: Text Left, Image Right -->
-    <div class="creator-big bg-purple animate-in">
-      <div class="creator-big-text">
-        <div class="big-icon">🔗</div>
-        <h3><span class="feature-num-inline">①</span> 一鍵綁定 Portaly 頁面</h3>
-        <p>購買後直接在 Portaly 後台設定自訂網域，不用懂技術，3 分鐘搞定</p>
+    <div class="creator-stack" data-animate>
+      <div class="creator-item">
+        <div class="cr-icon">🔗</div>
+        <div class="cr-text">
+          <h3><span class="feature-num">①</span> 一鍵綁定 Portaly 頁面</h3>
+          <p>購買後直接在 Portaly 後台設定自訂網域，不用懂技術，3 分鐘搞定</p>
+        </div>
       </div>
-      <div class="creator-big-image purple-bg">
-        <div class="img-icon">🔗</div>
+      <div class="creator-item">
+        <div class="cr-icon">📊</div>
+        <div class="cr-text">
+          <h3><span class="feature-num">②</span> 行銷工具一起用</h3>
+          <p>lihi 的短網址、AB 測試、UTM 追蹤，搭配 Portaly 的頁面，數據更清楚</p>
+        </div>
       </div>
-    </div>
-
-    <!-- Big Card 2: Image Left, Text Right -->
-    <div class="creator-big bg-green reverse animate-in">
-      <div class="creator-big-text">
-        <div class="big-icon">📊</div>
-        <h3><span class="feature-num-inline">②</span> 行銷工具一起用</h3>
-        <p>lihi 的短網址、AB 測試、UTM 追蹤，搭配 Portaly 的頁面，數據更清楚</p>
+      <div class="creator-item">
+        <div class="cr-icon">🧾</div>
+        <div class="cr-text">
+          <h3><span class="feature-num">③</span> 可開統編發票</h3>
+          <p>接品牌合作需要報帳？lihi 提供台灣正式發票，費用核銷不用煩</p>
+        </div>
       </div>
-      <div class="creator-big-image green-bg">
-        <div class="img-icon">📊</div>
-      </div>
-    </div>
-
-    <!-- Small Cards -->
-    <div class="creator-smalls">
-      <div class="creator-small animate-in">
-        <div class="sm-icon">🧾</div>
-        <h3><span class="feature-num-inline">③</span> 可開統編發票</h3>
-        <p>接品牌合作需要報帳？lihi 提供台灣正式發票，費用核銷不用煩</p>
-      </div>
-      <div class="creator-small animate-in">
-        <div class="sm-icon">💬</div>
-        <h3><span class="feature-num-inline">④</span> 在地團隊即時支援</h3>
-        <p>台灣團隊、中文客服，有問題不用翻牆找英文文件，真人快速回覆</p>
+      <div class="creator-item">
+        <div class="cr-icon">💬</div>
+        <div class="cr-text">
+          <h3><span class="feature-num">④</span> 在地團隊即時支援</h3>
+          <p>台灣團隊、中文客服，有問題不用翻牆找英文文件，真人快速回覆</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Section 7: Comparison Table -->
+<!-- Comparison Table -->
 <section class="comparison">
   <div class="container">
     <div class="section-label">COMPARISON</div>
     <h2 class="section-title">為什麼選擇 lihi ?</h2>
     <p class="section-subtitle">跟其他網域商比一比</p>
-    <div class="comparison-table animate-in">
+    <div class="comparison-table" data-animate>
       <table>
         <thead>
           <tr>
@@ -1285,23 +1091,23 @@ a { text-decoration: none; color: inherit; }
         <tbody>
           <tr>
             <td>Portaly 一鍵綁定</td>
-            <td><span class="icon-check">✓</span></td>
-            <td><span class="icon-cross">✗</span></td>
+            <td><span class="icon-check"></span></td>
+            <td><span class="icon-cross"></span></td>
           </tr>
           <tr>
             <td>中文介面 & 客服</td>
-            <td><span class="icon-check">✓</span></td>
+            <td><span class="icon-check"></span></td>
             <td class="partial">部分</td>
           </tr>
           <tr>
             <td>台灣發票</td>
-            <td><span class="icon-check">✓</span></td>
-            <td><span class="icon-cross">✗</span></td>
+            <td><span class="icon-check"></span></td>
+            <td><span class="icon-cross"></span></td>
           </tr>
           <tr>
             <td>行銷工具整合</td>
-            <td><span class="icon-check">✓</span></td>
-            <td><span class="icon-cross">✗</span></td>
+            <td><span class="icon-check"></span></td>
+            <td><span class="icon-cross"></span></td>
           </tr>
           <tr>
             <td>.tw 首年價格</td>
@@ -1314,77 +1120,40 @@ a { text-decoration: none; color: inherit; }
   </div>
 </section>
 
-<!-- Section 8: Steps -->
+<!-- Steps -->
 <section class="steps">
   <div class="container">
     <div class="section-label">HOW IT WORKS</div>
     <h2 class="section-title">三步驟，品牌網域上線</h2>
     <div class="steps-grid">
-      <div class="step animate-in">
+      <div class="step" data-animate>
         <div class="step-num">1</div>
-        <div class="step-phone">
-          <div class="step-phone-notch"></div>
-          <div class="step-phone-body">
-            <div class="ph-bar"></div>
-            <div class="ph-bar short"></div>
-            <div class="ph-btn"></div>
-          </div>
-        </div>
         <h3>搜尋網域</h3>
         <p>輸入你的品牌名，查看可用網域</p>
+        <div class="step-detail">支援 .tw / .com.tw / .com 等</div>
       </div>
-      <div class="step animate-in" style="transition-delay:0.15s;">
+      <div class="step" data-animate>
         <div class="step-num">2</div>
-        <div class="step-phone">
-          <div class="step-phone-notch"></div>
-          <div class="step-phone-body">
-            <div class="ph-bar green"></div>
-            <div class="ph-bar green short"></div>
-            <div class="ph-btn"></div>
-          </div>
-        </div>
         <h3>結帳付款</h3>
         <p>輸入折扣碼 PT99，完成付款</p>
+        <div class="step-detail">首年只要 $99 起</div>
       </div>
-      <div class="step animate-in" style="transition-delay:0.3s;">
+      <div class="step" data-animate>
         <div class="step-num">3</div>
-        <div class="step-phone">
-          <div class="step-phone-notch"></div>
-          <div class="step-phone-body">
-            <div class="ph-bar"></div>
-            <div class="ph-bar"></div>
-            <div class="ph-btn"></div>
-          </div>
-        </div>
         <h3>綁定 Portaly</h3>
         <p>到 Portaly 後台，設定自訂網域</p>
+        <div class="step-detail">3 分鐘搞定，免技術</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Section 9: Final CTA -->
+<!-- Final CTA -->
 <section class="final-cta">
-  <!-- Wave top -->
-  <div class="cta-wave-top">
-    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
-      <path d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,35 1440,30 L1440,60 L0,60 Z" fill="#FFFFFF"/>
-    </svg>
-  </div>
-  <!-- Glow orbs -->
-  <div class="glow-orb purple-big"></div>
-  <div class="glow-orb green-small"></div>
-  <!-- Grid texture -->
-  <div class="grid-texture"></div>
-  <!-- Floating decorations -->
-  <div class="floating-decor star" style="top:20%;left:10%;animation-delay:0.3s;">✦</div>
-  <div class="floating-decor dot-purple" style="bottom:30%;right:10%;animation-delay:1s;"></div>
-  <div class="floating-decor dot-green" style="top:40%;right:20%;animation-delay:2s;"></div>
-
   <div class="container">
     <h2>準備好升級你的品牌了嗎？</h2>
     <p class="cta-sub">使用折扣碼 <span class="code">PT99</span>，.tw / .link 網域首年只要 $99</p>
-    <form class="search-box" action="https://app.lihi.io/admin/searchDomain" method="GET" style="max-width:600px;margin:0 auto;">
+    <form class="search-box" action="https://app.lihi.io/admin/searchDomain" method="GET">
       <input type="hidden" name="p" value="portaly">
       <input type="text" name="q" placeholder="輸入你想要的品牌域名" required>
       <button type="submit" class="search-btn">查詢網域</button>
@@ -1393,7 +1162,7 @@ a { text-decoration: none; color: inherit; }
   </div>
 </section>
 
-<!-- Section 10: Footer -->
+<!-- Footer -->
 <footer class="footer">
   <div class="container">
     © 2025 Portaly × lihi.io ｜ 網域服務由 lihi.io 提供
@@ -1414,35 +1183,49 @@ function copyDiscount() {
   });
 }
 
-// Nav scroll behavior
+// Nav: IntersectionObserver to toggle scrolled class
 (function() {
   var nav = document.getElementById('navbar');
   var hero = document.getElementById('hero-section');
-  function checkNav() {
-    var heroBottom = hero.getBoundingClientRect().bottom;
-    if (heroBottom <= 64) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-  }
-  window.addEventListener('scroll', checkNav, { passive: true });
-  checkNav();
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        nav.classList.remove('scrolled');
+      } else {
+        nav.classList.add('scrolled');
+      }
+    });
+  }, { threshold: 0 });
+  observer.observe(hero);
 })();
 
-// Intersection Observer for scroll animations
+// Scroll animations with staggered delays
 (function() {
-  var items = document.querySelectorAll('.animate-in');
+  var items = document.querySelectorAll('[data-animate]');
   if ('IntersectionObserver' in window) {
     var obs = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
+          // Stagger children
+          var children = entry.target.querySelectorAll('[data-animate]');
+          if (children.length === 0) {
+            entry.target.classList.add('visible');
+          }
+          // Also mark the target itself
           entry.target.classList.add('visible');
           obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-    items.forEach(function(el) { obs.observe(el); });
+    }, { threshold: 0.1 });
+    items.forEach(function(el, i) {
+      // Stagger siblings by 0.05s
+      var siblings = el.parentElement.querySelectorAll('[data-animate]');
+      var idx = Array.prototype.indexOf.call(siblings, el);
+      if (idx > 0) {
+        el.style.transitionDelay = (idx * 0.05) + 's';
+      }
+      obs.observe(el);
+    });
   } else {
     items.forEach(function(el) { el.classList.add('visible'); });
   }
