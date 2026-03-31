@@ -46,6 +46,10 @@ a { text-decoration: none; color: inherit; }
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-decoration: underline wavy var(--purple);
+  text-decoration-skip-ink: none;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
 }
 .section-label {
   font-size: 13px;
@@ -157,7 +161,7 @@ a { text-decoration: none; color: inherit; }
   margin: 0 auto;
   background: #fff;
   border: 2px solid var(--border);
-  border-radius: 16px;
+  border-radius: 100px;
   overflow: hidden;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -428,7 +432,7 @@ a { text-decoration: none; color: inherit; }
   color: #fff;
   font-size: 18px;
   font-weight: 800;
-  border-radius: 10px;
+  border-radius: 50%;
   margin-bottom: 16px;
 }
 .feature-card h3 {
@@ -469,10 +473,10 @@ a { text-decoration: none; color: inherit; }
   border-bottom: 1px solid var(--border);
 }
 .comparison-table th {
-  background: var(--bg-light);
+  background: linear-gradient(135deg, #7C3AED, #9333EA);
   font-weight: 700;
   font-size: 14px;
-  color: var(--text-secondary);
+  color: #FFFFFF;
 }
 .comparison-table th:first-child,
 .comparison-table td:first-child {
@@ -484,12 +488,13 @@ a { text-decoration: none; color: inherit; }
   display: inline-block;
   background: linear-gradient(135deg, var(--purple), var(--green));
   color: #fff;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
-  padding: 2px 8px;
+  padding: 4px 14px;
   border-radius: 100px;
-  margin-left: 4px;
+  margin-left: 6px;
   vertical-align: middle;
+  letter-spacing: 0.5px;
 }
 .check { color: var(--green); font-weight: 700; }
 .cross { color: #CBD5E1; }
@@ -533,7 +538,7 @@ a { text-decoration: none; color: inherit; }
   color: #fff;
   font-size: 24px;
   font-weight: 900;
-  border-radius: 16px;
+  border-radius: 50%;
   margin-bottom: 20px;
 }
 .step h3 {
@@ -611,7 +616,7 @@ a { text-decoration: none; color: inherit; }
   .steps-grid::before { display: none; }
   .search-box {
     flex-direction: column;
-    border-radius: 12px;
+    border-radius: 24px;
   }
   .search-box input {
     border-bottom: 1px solid var(--border);
@@ -659,6 +664,7 @@ a { text-decoration: none; color: inherit; }
   <div class="container">
     <div class="discount-card">
       <div class="discount-label">🏷️ Portaly 創作者限定</div>
+      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:8px;">結帳時輸入折扣碼</p>
       <button class="discount-code" id="copyCode" onclick="copyDiscount()">
         PT99 <span class="copy-icon">📋</span>
       </button>
@@ -666,6 +672,7 @@ a { text-decoration: none; color: inherit; }
         .tw / .com.tw 網域，第一年只要 <span class="price">$99</span>
         <span class="original">$899</span>
       </div>
+      <p style="font-size:12px;color:var(--text-secondary);margin-top:16px;">* 優惠碼限時有效，數量有限</p>
     </div>
   </div>
 </section>
@@ -675,6 +682,7 @@ a { text-decoration: none; color: inherit; }
   <div class="container">
     <div class="section-label">WHY CUSTOM DOMAIN</div>
     <h2 class="section-title">自訂網域，品牌升級的第一步</h2>
+    <p class="section-subtitle">超過 200,000 位創作者選擇 Portaly，最專業的那群人都有自己的網域</p>
     <div class="cards-grid">
       <div class="card">
         <div class="card-icon">👑</div>
@@ -713,7 +721,7 @@ a { text-decoration: none; color: inherit; }
             <div class="site-tagline">portaly.cc/beckvegas</div>
           </div>
         </div>
-        <div class="browser-note">升級前 — 看起來像平台用戶</div>
+        <div class="browser-note"><span style="display:inline-block;background:#E2E8F0;color:var(--text-secondary);font-size:12px;font-weight:700;padding:2px 10px;border-radius:100px;margin-right:6px;">升級前</span>看起來像平台用戶</div>
       </div>
       <!-- After -->
       <div>
@@ -727,7 +735,7 @@ a { text-decoration: none; color: inherit; }
             <div class="site-tagline">beckvegas.tw</div>
           </div>
         </div>
-        <div class="browser-note highlight">升級後 — 看起來像品牌官網 ✨</div>
+        <div class="browser-note highlight"><span style="display:inline-block;background:var(--purple);color:#fff;font-size:12px;font-weight:700;padding:2px 10px;border-radius:100px;margin-right:6px;">升級後</span>看起來像品牌官網 ✨</div>
       </div>
     </div>
   </div>
