@@ -88,7 +88,7 @@ a { text-decoration: none; color: inherit; }
   transform: translateY(0);
 }
 
-/* ===== NAV ===== */
+/* ===== NAV (from new — transparent→white scroll) ===== */
 .nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -135,7 +135,7 @@ a { text-decoration: none; color: inherit; }
   box-shadow: 0 4px 16px rgba(124,58,237,0.3);
 }
 
-/* ===== HERO ===== */
+/* ===== HERO (from new — deep purple gradient + orbs + hero-fade) ===== */
 .hero {
   position: relative;
   background: linear-gradient(160deg, #1E0A3C 0%, #2D1B69 50%, #1A0E35 100%);
@@ -255,7 +255,7 @@ a { text-decoration: none; color: inherit; }
   z-index: 1;
 }
 
-/* ===== DISCOUNT ===== */
+/* ===== DISCOUNT (from new — gradient border + colorful shadow) ===== */
 .discount {
   padding: 40px 0 24px;
   background: var(--bg-white);
@@ -330,87 +330,72 @@ a { text-decoration: none; color: inherit; }
   margin-left: 8px;
 }
 
-/* ===== WHY SECTION ===== */
+/* ===== SECTION 4: WHY CUSTOM DOMAIN (from old — 3-col cards + icon beside title) ===== */
 .why {
-  padding: 80px 0;
+  padding: 48px 0;
   background: var(--bg-white);
   text-align: center;
 }
-.why-cards {
+.cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  margin-top: 40px;
+  margin-top: 32px;
 }
-.why-card {
+.card {
   background: #fff;
   border: 1px solid var(--border);
-  border-left: 4px solid var(--purple);
-  border-radius: 0 16px 16px 0;
-  padding: 32px 28px;
+  border-radius: 16px;
+  padding: 20px 24px;
   text-align: left;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
 }
-.why-card:nth-child(1) { border-left-color: #7C3AED; }
-.why-card:nth-child(2) { border-left-color: #8B5CF6; }
-.why-card:nth-child(3) { border-left-color: #10B981; }
-.why-card:hover {
+.card:hover {
+  border-color: var(--purple);
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(124,58,237,0.12);
+  box-shadow: 0 12px 32px rgba(124,58,237,0.1);
 }
-.why-card .card-icon {
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.card-icon {
   font-size: 32px;
-  width: 56px; height: 56px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 14px;
-  margin-bottom: 16px;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-purple-soft);
+  border-radius: 12px;
 }
-.why-card:nth-child(1) .card-icon { background: rgba(124,58,237,0.1); }
-.why-card:nth-child(2) .card-icon { background: rgba(139,92,246,0.1); }
-.why-card:nth-child(3) .card-icon { background: rgba(16,185,129,0.1); }
-.why-card h3 {
-  font-size: 20px;
-  font-weight: 800;
-  margin-bottom: 10px;
+.card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
   color: var(--text-primary);
 }
-.why-card p {
+.card p {
   font-size: 15px;
   color: var(--text-secondary);
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
-/* ===== COMPARE / BEFORE-AFTER ===== */
+/* ===== SECTION 5: BEFORE/AFTER (from old — basic browser mockup) ===== */
 .compare {
-  padding: 80px 0;
+  padding: 48px 0;
   background: var(--bg-light);
   text-align: center;
-  position: relative;
-  overflow: hidden;
 }
 .browser-grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  max-width: 950px;
-  margin: 40px auto 0;
-  position: relative;
-  z-index: 1;
-}
-.browser-col { flex: 1; }
-.browser-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 56px; height: 56px;
-  font-size: 28px;
-  font-weight: 900;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--purple), var(--green));
-  color: #fff;
-  box-shadow: 0 4px 16px rgba(124,58,237,0.3);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 900px;
+  margin: 32px auto 0;
 }
 .browser-mockup {
   border-radius: 12px;
@@ -418,11 +403,10 @@ a { text-decoration: none; color: inherit; }
   background: #fff;
   border: 1px solid var(--border);
   box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-  transition: transform 0.3s;
+  position: relative;
 }
 .browser-mockup.after {
-  box-shadow: 0 8px 40px rgba(124,58,237,0.18), 0 0 80px rgba(124,58,237,0.08);
-  transform: scale(1.05);
+  box-shadow: 0 4px 32px rgba(124,58,237,0.15), 0 0 60px rgba(124,58,237,0.08);
 }
 .browser-topbar {
   display: flex;
@@ -457,49 +441,24 @@ a { text-decoration: none; color: inherit; }
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-/* Browser page content — CSS fake page */
-.browser-page {
-  padding: 24px;
-  min-height: 220px;
+.browser-body {
+  padding: 48px 24px;
+  min-height: 180px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 12px;
 }
-.browser-page .avatar {
-  width: 64px; height: 64px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #C4B5FD, #A78BFA);
-}
-.browser-page .name {
-  font-size: 16px;
+.browser-body .site-name {
+  font-size: 24px;
   font-weight: 800;
-  color: var(--text-primary);
 }
-.browser-page .bio-bar {
-  width: 120px; height: 8px;
-  background: #E2E8F0;
-  border-radius: 4px;
+.browser-body .site-tagline {
+  font-size: 14px;
+  color: var(--text-secondary);
 }
-.browser-page .link-btn {
-  width: 85%;
-  padding: 10px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  text-align: center;
-  color: #fff;
-  background: #94A3B8;
-}
-/* Before browser: gray buttons */
-.browser-mockup:not(.after) .link-btn:nth-child(4) { background: #94A3B8; }
-.browser-mockup:not(.after) .link-btn:nth-child(5) { background: #A1A1AA; }
-.browser-mockup:not(.after) .link-btn:nth-child(6) { background: #B0B0BA; }
-/* After browser: purple buttons */
-.browser-mockup.after .link-btn:nth-child(4) { background: var(--purple); }
-.browser-mockup.after .link-btn:nth-child(5) { background: var(--purple-dark); }
-.browser-mockup.after .link-btn:nth-child(6) { background: #9333EA; }
-.browser-mockup.after .name {
+.browser-mockup.after .site-name {
   background: linear-gradient(135deg, var(--purple), var(--green));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -516,95 +475,75 @@ a { text-decoration: none; color: inherit; }
   font-weight: 700;
 }
 
-/* ===== CREATORS — Vertical merged cards ===== */
+/* ===== SECTION 6: FOR CREATORS (from old — 4 cards + number badge beside title) ===== */
 .creators {
-  padding: 80px 0;
+  padding: 48px 0;
   background: var(--bg-white);
   text-align: center;
 }
-.creator-stack {
-  display: flex;
-  flex-direction: column;
-  max-width: 700px;
-  margin: 40px auto 0;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid var(--border);
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 32px auto 0;
+}
+.feature-card {
   background: #fff;
-}
-.creator-item {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 28px 32px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 24px;
   text-align: left;
-  border-bottom: 1px solid var(--border);
-  transition: background 0.2s;
-  cursor: default;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
 }
-.creator-item:last-child {
-  border-bottom: none;
+.feature-card:hover {
+  border-color: var(--purple);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(124,58,237,0.1);
 }
-.creator-item:hover {
-  background: var(--bg-purple-soft);
-}
-.creator-item .cr-icon {
-  font-size: 36px;
-  flex-shrink: 0;
-  width: 56px; height: 56px;
-  display: flex; align-items: center; justify-content: center;
-  background: rgba(124,58,237,0.08);
-  border-radius: 14px;
-}
-.creator-item .cr-text { flex: 1; }
-.creator-item .cr-text h3 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 6px;
-  color: var(--text-primary);
-  display: flex; align-items: center; gap: 8px;
-}
-.creator-item .cr-text h3 .feature-num {
+.feature-num {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px; height: 28px;
+  width: 40px; height: 40px;
   background: linear-gradient(135deg, var(--purple), var(--green));
   color: #fff;
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 800;
   border-radius: 50%;
   flex-shrink: 0;
 }
-.creator-item .cr-text p {
+.feature-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.feature-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-primary);
+}
+.feature-card p {
   font-size: 15px;
   color: var(--text-secondary);
   line-height: 1.7;
 }
 
-/* ===== COMPARISON TABLE ===== */
+/* ===== SECTION 7: COMPARISON TABLE (from old — basic table + purple gradient header) ===== */
 .comparison {
-  padding: 80px 0;
+  padding: 48px 0;
   background: var(--bg-light);
   text-align: center;
-  position: relative;
 }
 .comparison-table {
-  max-width: 720px;
+  max-width: 700px;
   margin: 32px auto 0;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--border);
   background: #fff;
-  position: relative;
-}
-.comparison-table::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--purple), var(--green), var(--purple));
-  z-index: 1;
 }
 .comparison-table table {
   width: 100%;
@@ -628,22 +567,7 @@ a { text-decoration: none; color: inherit; }
   text-align: left;
   font-weight: 600;
 }
-.comparison-table td:nth-child(2) {
-  background: rgba(124,58,237,0.04);
-}
-.comparison-table th:nth-child(2) {
-  background: linear-gradient(135deg, #6D28D9, #7C3AED);
-}
 .comparison-table tr:last-child td { border-bottom: none; }
-.comparison-table tbody tr {
-  transition: background 0.2s;
-}
-.comparison-table tbody tr:hover td {
-  background: var(--bg-purple-soft);
-}
-.comparison-table tbody tr:hover td:nth-child(2) {
-  background: rgba(124,58,237,0.08);
-}
 .badge-rec {
   display: inline-block;
   background: linear-gradient(135deg, var(--purple), var(--green));
@@ -656,71 +580,33 @@ a { text-decoration: none; color: inherit; }
   vertical-align: middle;
   letter-spacing: 0.5px;
 }
-/* CSS check/cross icons */
-.icon-check, .icon-cross {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  position: relative;
-}
-.icon-check {
-  background: var(--green);
-}
-.icon-check::before {
-  content: '';
-  width: 7px; height: 12px;
-  border: solid #fff;
-  border-width: 0 2.5px 2.5px 0;
-  transform: rotate(45deg);
-  margin-top: -2px;
-}
-.icon-cross {
-  background: #E2E8F0;
-}
-.icon-cross::before {
-  content: '';
-  width: 12px; height: 2.5px;
-  background: #fff;
-  position: absolute;
-  transform: rotate(45deg);
-}
-.icon-cross::after {
-  content: '';
-  width: 12px; height: 2.5px;
-  background: #fff;
-  position: absolute;
-  transform: rotate(-45deg);
-}
-.check-price { color: var(--green); font-weight: 700; font-size: 16px; }
+.check { color: var(--green); font-weight: 700; }
+.cross { color: #CBD5E1; }
 .partial { color: var(--text-secondary); font-size: 14px; }
 
-/* ===== STEPS ===== */
+/* ===== SECTION 8: STEPS (from old — 3 steps) ===== */
 .steps {
-  padding: 80px 0;
+  padding: 48px 0;
   background: var(--bg-white);
   text-align: center;
 }
 .steps-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  max-width: 960px;
-  margin: 40px auto 0;
+  gap: 24px;
+  max-width: 900px;
+  margin: 32px auto 0;
   position: relative;
 }
-/* Gradient solid line */
 .steps-grid::before {
   content: '';
   position: absolute;
-  top: 40px;
-  left: 18%;
-  right: 18%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--purple), var(--green));
+  top: 32px;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  border-top: 2px dashed var(--border);
   z-index: 0;
-  border-radius: 2px;
 }
 .step {
   position: relative;
@@ -738,35 +624,21 @@ a { text-decoration: none; color: inherit; }
   font-weight: 900;
   border-radius: 50%;
   margin-bottom: 20px;
-  position: relative;
-  z-index: 2;
-  box-shadow: 0 0 0 6px #fff, 0 0 0 8px rgba(124,58,237,0.2);
 }
 .step h3 {
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 8px;
 }
-.step > p {
+.step p {
   font-size: 14px;
   color: var(--text-secondary);
   line-height: 1.6;
   max-width: 240px;
   margin: 0 auto;
 }
-.step-detail {
-  margin: 12px auto 0;
-  max-width: 220px;
-  background: var(--bg-purple-soft);
-  border-radius: 10px;
-  padding: 10px 16px;
-  font-size: 13px;
-  color: var(--purple-dark);
-  font-weight: 500;
-  line-height: 1.5;
-}
 
-/* ===== FINAL CTA ===== */
+/* ===== SECTION 9: FINAL CTA (old structure + new dark purple bg) ===== */
 .final-cta {
   position: relative;
   background: linear-gradient(160deg, #1E0A3C 0%, #2D1B69 50%, #1A0E35 100%);
@@ -796,7 +668,7 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 28px;
 }
 .final-cta .cta-sub .code { color: var(--green-light); font-weight: 700; }
-/* CTA search box — same as hero dark style */
+/* CTA search box — dark style matching hero */
 .final-cta .search-box {
   display: flex;
   max-width: 600px;
@@ -829,7 +701,7 @@ a { text-decoration: none; color: inherit; }
   color: rgba(255,255,255,0.55);
 }
 
-/* ===== FOOTER ===== */
+/* ===== SECTION 10: FOOTER (from old) ===== */
 .footer {
   padding: 32px 0;
   background: var(--bg-white);
@@ -839,11 +711,11 @@ a { text-decoration: none; color: inherit; }
   color: var(--text-secondary);
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===== RESPONSIVE (merged: old RWD + new hero/nav/discount/final-cta RWD) ===== */
 @media (max-width: 1023px) {
   .hero h1 { font-size: 36px; }
   .section-title { font-size: 30px; }
-  .why-cards { grid-template-columns: 1fr; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
   .steps-grid { grid-template-columns: repeat(2, 1fr); }
   .steps-grid::before { display: none; }
 }
@@ -853,7 +725,7 @@ a { text-decoration: none; color: inherit; }
   .hero-sub { font-size: 16px; }
   .section-title { font-size: 26px; }
   .section-subtitle { font-size: 16px; }
-  /* Hero search stacks */
+  /* Hero & Final CTA search stacks */
   .hero .search-box,
   .final-cta .search-box {
     flex-direction: column;
@@ -868,42 +740,12 @@ a { text-decoration: none; color: inherit; }
     padding: 14px;
     border-radius: 0;
   }
-  /* Browser grid stack */
-  .browser-grid { flex-direction: column; gap: 16px; }
-  .browser-arrow { transform: rotate(90deg); }
-  .browser-mockup.after { transform: scale(1); }
-  /* Steps vertical + gradient line */
-  .steps-grid {
-    grid-template-columns: 1fr;
-    gap: 0;
-    padding-left: 40px;
-    position: relative;
-  }
-  .steps-grid::before {
-    display: block;
-    top: 0; bottom: 0;
-    left: 20px; right: auto;
-    width: 3px; height: auto;
-    background: linear-gradient(180deg, var(--purple), var(--green));
-  }
-  .step {
-    text-align: left;
-    padding: 24px 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 0 16px;
-  }
-  .step-num {
-    width: 48px; height: 48px;
-    font-size: 18px;
-    margin-bottom: 0;
-    margin-left: -44px;
-    box-shadow: 0 0 0 4px #fff, 0 0 0 6px rgba(124,58,237,0.2);
-  }
-  .step h3 { flex: 1; padding-top: 10px; }
-  .step > p { max-width: 100%; margin: 8px 0 0 0; width: 100%; }
-  .step-detail { margin: 8px 0 0; max-width: 100%; }
+  /* Old RWD for sections 4-8 */
+  .cards-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .browser-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .steps-grid::before { display: none; }
   /* Discount */
   .discount-card { padding: 24px 16px; }
   .discount-code { font-size: 20px; padding: 10px 24px; }
@@ -912,13 +754,12 @@ a { text-decoration: none; color: inherit; }
   .comparison-table th,
   .comparison-table td { padding: 12px 10px; font-size: 13px; }
   .final-cta h2 { font-size: 28px; }
-  .creator-item { padding: 20px 16px; }
 }
 </style>
 </head>
 <body>
 
-<!-- Nav Bar -->
+<!-- Nav Bar (from new — transparent→white scroll) -->
 <nav class="nav" id="navbar">
   <div class="container nav-inner">
     <div class="nav-logo">Portaly <span>×</span> lihi.io</div>
@@ -926,7 +767,7 @@ a { text-decoration: none; color: inherit; }
   </div>
 </nav>
 
-<!-- Hero -->
+<!-- Hero (from new — deep purple gradient + orbs + hero-fade) -->
 <section class="hero" id="hero-section">
   <div class="container">
     <div class="hero-badge"><span class="dot"></span> Portaly 創作者專屬</div>
@@ -941,7 +782,7 @@ a { text-decoration: none; color: inherit; }
   <div class="hero-fade"></div>
 </section>
 
-<!-- Discount -->
+<!-- Discount (from new — gradient border + colorful shadow) -->
 <section class="discount">
   <div class="container">
     <div class="discount-card" data-animate>
@@ -959,74 +800,62 @@ a { text-decoration: none; color: inherit; }
   </div>
 </section>
 
-<!-- Why Custom Domain -->
+<!-- Section 4: Why Custom Domain (from old — 3-col cards + icon beside title) -->
 <section class="why">
   <div class="container">
     <div class="section-label">WHY CUSTOM DOMAIN</div>
     <h2 class="section-title">自訂網域，品牌升級的第一步</h2>
     <p class="section-subtitle">頂尖創作者都知道，專屬網域是經營個人品牌的基本配備</p>
-    <div class="why-cards">
-      <div class="why-card" data-animate>
-        <div class="card-icon">👑</div>
-        <h3>品牌辨識度飆升</h3>
+    <div class="cards-grid">
+      <div class="card" data-animate>
+        <div class="card-header"><div class="card-icon">👑</div>
+        <h3>品牌辨識度飆升</h3></div>
         <p>用自己的名字當網址，粉絲一眼就記住。品牌合作邀約看到專屬網域，專業感和信任度直接拉滿。</p>
       </div>
-      <div class="why-card" data-animate>
-        <div class="card-icon">📈</div>
-        <h3>SEO 搜尋加分</h3>
+      <div class="card" data-animate>
+        <div class="card-header"><div class="card-icon">📈</div>
+        <h3>SEO 搜尋加分</h3></div>
         <p>自有網域在搜尋引擎的權重更高。粉絲搜你的名字，直接找到你。</p>
       </div>
-      <div class="why-card" data-animate>
-        <div class="card-icon">🛡️</div>
-        <h3>讓流量可以更完整被追蹤</h3>
+      <div class="card" data-animate>
+        <div class="card-header"><div class="card-icon">🛡️</div>
+        <h3>讓流量可以更完整被追蹤</h3></div>
         <p>搭配 lihi 短網址的 UTM 追蹤與數據分析，每一次點擊都看得到來源，行銷成效不再靠猜。</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Before/After Compare -->
+<!-- Section 5: Before/After Compare (from old — basic browser mockup) -->
 <section class="compare">
-  <div class="container" style="position:relative;z-index:1;">
+  <div class="container">
     <div class="section-label">BEFORE & AFTER</div>
     <h2 class="section-title">品牌升級前後對比</h2>
     <div class="browser-grid" data-animate>
       <!-- Before -->
-      <div class="browser-col">
+      <div>
         <div class="browser-mockup">
           <div class="browser-topbar">
             <div class="browser-dots"><span></span><span></span><span></span></div>
             <div class="browser-url">portaly.cc/beckvegas</div>
           </div>
-          <div class="browser-page">
-            <div class="avatar"></div>
-            <div class="name">beckvegas</div>
-            <div class="bio-bar"></div>
-            <div class="link-btn">我的 YouTube 頻道</div>
-            <div class="link-btn">Instagram</div>
-            <div class="link-btn">合作邀約</div>
+          <div class="browser-body">
+            <div class="site-name">beckvegas</div>
+            <div class="site-tagline">portaly.cc/beckvegas</div>
           </div>
         </div>
         <div class="browser-note"><span style="display:inline-block;background:#E2E8F0;color:var(--text-secondary);font-size:12px;font-weight:700;padding:2px 10px;border-radius:100px;margin-right:6px;">升級前</span>看起來像平台用戶</div>
       </div>
-
-      <!-- Arrow -->
-      <div class="browser-arrow">→</div>
-
       <!-- After -->
-      <div class="browser-col">
+      <div>
         <div class="browser-mockup after">
           <div class="browser-topbar">
             <div class="browser-dots"><span></span><span></span><span></span></div>
             <div class="browser-url">beckvegas.tw</div>
           </div>
-          <div class="browser-page">
-            <div class="avatar"></div>
-            <div class="name">beckvegas</div>
-            <div class="bio-bar"></div>
-            <div class="link-btn">我的 YouTube 頻道</div>
-            <div class="link-btn">Instagram</div>
-            <div class="link-btn">合作邀約</div>
+          <div class="browser-body">
+            <div class="site-name">beckvegas</div>
+            <div class="site-tagline">beckvegas.tw</div>
           </div>
         </div>
         <div class="browser-note highlight"><span style="display:inline-block;background:var(--purple);color:#fff;font-size:12px;font-weight:700;padding:2px 10px;border-radius:100px;margin-right:6px;">升級後</span>看起來像品牌官網 ✨</div>
@@ -1035,45 +864,37 @@ a { text-decoration: none; color: inherit; }
   </div>
 </section>
 
-<!-- For Portaly Creators — Vertical Merged Cards -->
+<!-- Section 6: For Portaly Creators (from old — 4 cards + number badge beside title) -->
 <section class="creators">
   <div class="container">
     <div class="section-label">FOR PORTALY CREATORS</div>
     <h2 class="section-title">專為 Portaly 創作者設計</h2>
-    <div class="creator-stack" data-animate>
-      <div class="creator-item">
-        <div class="cr-icon">🔗</div>
-        <div class="cr-text">
-          <h3><span class="feature-num">①</span> 一鍵綁定 Portaly 頁面</h3>
-          <p>購買後直接在 Portaly 後台設定自訂網域，不用懂技術，3 分鐘搞定</p>
-        </div>
+    <div class="features-grid" data-animate>
+      <div class="feature-card">
+        <div class="feature-header"><div class="feature-num">①</div>
+        <h3>一鍵綁定 Portaly 頁面</h3></div>
+        <p>購買後直接在 Portaly 後台設定自訂網域，不用懂技術，3 分鐘搞定</p>
       </div>
-      <div class="creator-item">
-        <div class="cr-icon">📊</div>
-        <div class="cr-text">
-          <h3><span class="feature-num">②</span> 行銷工具一起用</h3>
-          <p>lihi 的短網址、AB 測試、UTM 追蹤，搭配 Portaly 的頁面，數據更清楚</p>
-        </div>
+      <div class="feature-card">
+        <div class="feature-header"><div class="feature-num">②</div>
+        <h3>行銷工具一起用</h3></div>
+        <p>lihi 的短網址、AB 測試、UTM 追蹤，搭配 Portaly 的頁面，數據更清楚</p>
       </div>
-      <div class="creator-item">
-        <div class="cr-icon">🧾</div>
-        <div class="cr-text">
-          <h3><span class="feature-num">③</span> 可開統編發票</h3>
-          <p>接品牌合作需要報帳？lihi 提供台灣正式發票，費用核銷不用煩</p>
-        </div>
+      <div class="feature-card">
+        <div class="feature-header"><div class="feature-num">③</div>
+        <h3>可開統編發票</h3></div>
+        <p>接品牌合作需要報帳？lihi 提供台灣正式發票，費用核銷不用煩</p>
       </div>
-      <div class="creator-item">
-        <div class="cr-icon">💬</div>
-        <div class="cr-text">
-          <h3><span class="feature-num">④</span> 在地團隊即時支援</h3>
-          <p>台灣團隊、中文客服，有問題不用翻牆找英文文件，真人快速回覆</p>
-        </div>
+      <div class="feature-card">
+        <div class="feature-header"><div class="feature-num">④</div>
+        <h3>在地團隊即時支援</h3></div>
+        <p>台灣團隊、中文客服，有問題不用翻牆找英文文件，真人快速回覆</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Comparison Table -->
+<!-- Section 7: Comparison Table (from old — basic table + purple gradient header) -->
 <section class="comparison">
   <div class="container">
     <div class="section-label">COMPARISON</div>
@@ -1091,27 +912,27 @@ a { text-decoration: none; color: inherit; }
         <tbody>
           <tr>
             <td>Portaly 一鍵綁定</td>
-            <td><span class="icon-check"></span></td>
-            <td><span class="icon-cross"></span></td>
+            <td class="check">✓</td>
+            <td class="cross">✗</td>
           </tr>
           <tr>
             <td>中文介面 & 客服</td>
-            <td><span class="icon-check"></span></td>
+            <td class="check">✓</td>
             <td class="partial">部分</td>
           </tr>
           <tr>
             <td>台灣發票</td>
-            <td><span class="icon-check"></span></td>
-            <td><span class="icon-cross"></span></td>
+            <td class="check">✓</td>
+            <td class="cross">✗</td>
           </tr>
           <tr>
             <td>行銷工具整合</td>
-            <td><span class="icon-check"></span></td>
-            <td><span class="icon-cross"></span></td>
+            <td class="check">✓</td>
+            <td class="cross">✗</td>
           </tr>
           <tr>
             <td>.tw 首年價格</td>
-            <td><span class="check-price">$99</span></td>
+            <td class="check">$99</td>
             <td class="partial">$800+</td>
           </tr>
         </tbody>
@@ -1120,7 +941,7 @@ a { text-decoration: none; color: inherit; }
   </div>
 </section>
 
-<!-- Steps -->
+<!-- Section 8: Steps (from old — 3 steps) -->
 <section class="steps">
   <div class="container">
     <div class="section-label">HOW IT WORKS</div>
@@ -1130,25 +951,22 @@ a { text-decoration: none; color: inherit; }
         <div class="step-num">1</div>
         <h3>搜尋網域</h3>
         <p>輸入你的品牌名，查看可用網域</p>
-        <div class="step-detail">支援 .tw / .com.tw / .com 等</div>
       </div>
       <div class="step" data-animate>
         <div class="step-num">2</div>
         <h3>結帳付款</h3>
         <p>輸入折扣碼 PT99，完成付款</p>
-        <div class="step-detail">首年只要 $99 起</div>
       </div>
       <div class="step" data-animate>
         <div class="step-num">3</div>
         <h3>綁定 Portaly</h3>
         <p>到 Portaly 後台，設定自訂網域</p>
-        <div class="step-detail">3 分鐘搞定，免技術</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Final CTA -->
+<!-- Section 9: Final CTA (old structure + new dark purple bg matching hero) -->
 <section class="final-cta">
   <div class="container">
     <h2>準備好升級你的品牌了嗎？</h2>
@@ -1162,7 +980,7 @@ a { text-decoration: none; color: inherit; }
   </div>
 </section>
 
-<!-- Footer -->
+<!-- Section 10: Footer (from old) -->
 <footer class="footer">
   <div class="container">
     © 2025 Portaly × lihi.io ｜ 網域服務由 lihi.io 提供
@@ -1170,7 +988,7 @@ a { text-decoration: none; color: inherit; }
 </footer>
 
 <script>
-// Copy discount code
+// Copy discount code (from new)
 function copyDiscount() {
   navigator.clipboard.writeText('PT99').then(function() {
     var btn = document.getElementById('copyCode');
@@ -1183,7 +1001,7 @@ function copyDiscount() {
   });
 }
 
-// Nav: IntersectionObserver to toggle scrolled class
+// Nav scroll toggle (from new — IntersectionObserver)
 (function() {
   var nav = document.getElementById('navbar');
   var hero = document.getElementById('hero-section');
@@ -1199,26 +1017,19 @@ function copyDiscount() {
   observer.observe(hero);
 })();
 
-// Scroll animations with staggered delays
+// Scroll animations with staggered delays (from new)
 (function() {
   var items = document.querySelectorAll('[data-animate]');
   if ('IntersectionObserver' in window) {
     var obs = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
-          // Stagger children
-          var children = entry.target.querySelectorAll('[data-animate]');
-          if (children.length === 0) {
-            entry.target.classList.add('visible');
-          }
-          // Also mark the target itself
           entry.target.classList.add('visible');
           obs.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
     items.forEach(function(el, i) {
-      // Stagger siblings by 0.05s
       var siblings = el.parentElement.querySelectorAll('[data-animate]');
       var idx = Array.prototype.indexOf.call(siblings, el);
       if (idx > 0) {
