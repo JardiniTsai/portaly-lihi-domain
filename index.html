@@ -720,6 +720,10 @@ a { text-decoration: none; color: inherit; }
   .steps-grid::before { display: none; }
 }
 @media (max-width: 767px) {
+  /* Nav: not fixed on mobile to avoid blocking search */
+  .nav { position: absolute; }
+  .nav .nav-cta { display: none; }
+
   /* Hero & Final CTA search stacks (preserved) */
   .hero .search-box,
   .final-cta .search-box {
