@@ -720,12 +720,7 @@ a { text-decoration: none; color: inherit; }
   .steps-grid::before { display: none; }
 }
 @media (max-width: 767px) {
-  .hero { padding: 110px 0 100px; }
-  .hero h1 { font-size: 28px; }
-  .hero-sub { font-size: 16px; }
-  .section-title { font-size: 26px; }
-  .section-subtitle { font-size: 16px; }
-  /* Hero & Final CTA search stacks */
+  /* Hero & Final CTA search stacks (preserved) */
   .hero .search-box,
   .final-cta .search-box {
     flex-direction: column;
@@ -740,20 +735,100 @@ a { text-decoration: none; color: inherit; }
     padding: 14px;
     border-radius: 0;
   }
-  /* Old RWD for sections 4-8 */
   .cards-grid { grid-template-columns: 1fr; }
   .features-grid { grid-template-columns: 1fr; }
-  .browser-grid { grid-template-columns: 1fr; }
-  .steps-grid { grid-template-columns: 1fr; }
-  .steps-grid::before { display: none; }
-  /* Discount */
-  .discount-card { padding: 24px 16px; }
-  .discount-code { font-size: 20px; padding: 10px 24px; }
-  .discount-price .price { font-size: 32px; }
   .nav-logo { font-size: 16px; }
-  .comparison-table th,
-  .comparison-table td { padding: 12px 10px; font-size: 13px; }
-  .final-cta h2 { font-size: 28px; }
+  .discount-price .price { font-size: 32px; }
+
+  /* HERO */
+  .hero { padding: 48px 0 36px; }
+  .hero h1 { font-size: 26px; margin-bottom: 12px; }
+  .hero-badge { margin-bottom: 16px; font-size: 12px; padding: 6px 14px; }
+  .hero-sub { font-size: 15px; margin-bottom: 20px; line-height: 1.6; }
+
+  /* 折扣碼 */
+  .discount { padding: 12px 0; }
+  .discount-card { padding: 20px 16px; }
+  .discount-label { font-size: 14px; margin-bottom: 8px; }
+  .discount-code { font-size: 18px; padding: 8px 20px; margin-bottom: 8px; }
+  .discount-price { font-size: 15px; }
+
+  /* WHY 卡片 */
+  .why { padding: 32px 0; }
+  .why .section-title { font-size: 22px; margin-bottom: 8px; }
+  .cards-grid { gap: 12px; margin-top: 16px; }
+  .card { padding: 16px; }
+  .card-icon { width: 36px; height: 36px; font-size: 20px; border-radius: 8px; }
+  .card h3 { font-size: 15px; }
+  .card p { font-size: 13px; line-height: 1.5; }
+
+  /* BROWSER 對比 — 手機也維持雙欄 */
+  .compare { padding: 32px 0; }
+  .compare .section-title { font-size: 22px; }
+  .browser-grid { grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+  .browser-topbar { padding: 6px 8px; gap: 4px; }
+  .browser-dots span { width: 6px; height: 6px; }
+  .browser-url { font-size: 10px; padding: 3px 6px; }
+  .browser-body { padding: 20px 8px; min-height: 120px; }
+  .browser-body .site-name { font-size: 14px; }
+  .browser-body .site-tagline { font-size: 10px; }
+  .browser-note { font-size: 12px; margin-top: 8px; }
+
+  /* 創作者 — 卡片合併 */
+  .creators { padding: 32px 0; }
+  .creators .section-title { font-size: 22px; }
+  .features-grid { gap: 0; margin-top: 16px; }
+  .feature-card { padding: 14px 16px; border-radius: 0; border-bottom: none; }
+  .feature-card:first-child { border-radius: 12px 12px 0 0; }
+  .feature-card:last-child { border-radius: 0 0 12px 12px; border-bottom: 1px solid var(--border); }
+  .feature-num { width: 28px; height: 28px; font-size: 13px; }
+  .feature-card h3 { font-size: 15px; }
+  .feature-card p { font-size: 13px; line-height: 1.5; }
+
+  /* 比較表 */
+  .comparison { padding: 32px 0; }
+  .comparison .section-title { font-size: 22px; }
+  .comparison .section-subtitle { font-size: 14px; margin-bottom: 16px; }
+  .comparison-table { margin-top: 16px; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; font-size: 13px; }
+
+  /* 三步驟 — 改水平滾動 */
+  .steps { padding: 32px 0; }
+  .steps .section-title { font-size: 22px; }
+  .steps-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+    margin-top: 20px;
+    padding-bottom: 8px;
+  }
+  .steps-grid::before { display: none; }
+  .step {
+    flex: 0 0 70%;
+    scroll-snap-align: center;
+    background: var(--bg-purple-soft, #F5F3FF);
+    border-radius: 16px;
+    padding: 20px 16px;
+  }
+  .step-num { width: 40px; height: 40px; font-size: 16px; margin-bottom: 12px; }
+  .step h3 { font-size: 15px; margin-bottom: 4px; }
+  .step p { font-size: 13px; max-width: none; }
+
+  /* 最終 CTA */
+  .final-cta { padding: 40px 0; }
+  .final-cta h2 { font-size: 22px; margin-bottom: 10px; }
+  .final-cta .cta-sub { font-size: 14px; margin-bottom: 20px; }
+  .final-cta .cta-note { margin-top: 12px; font-size: 12px; }
+
+  /* Footer */
+  .footer { padding: 16px 0; font-size: 12px; }
+
+  /* 全域標題 */
+  .section-label { font-size: 11px; letter-spacing: 1.5px; margin-bottom: 8px; }
+  .section-title { font-size: 22px; margin-bottom: 8px; }
+  .section-subtitle { font-size: 14px; margin-bottom: 16px; }
 }
 </style>
 </head>
