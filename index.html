@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portaly × lihi.io — 你的品牌頁面，值得一個專屬網域</title>
+<meta name="description" content="Portaly 創作者專屬網域購買頁，.tw / .com.tw 首年只要 $99！">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', 'Noto Sans TC', sans-serif;
+  color: #1E293B;
+  background: #FFFFFF;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* ===== VARIABLES ===== */
+:root {
+  --purple: #7C3AED;
+  --green: #10B981;
+  --bg-white: #FFFFFF;
+  --bg-light: #F8FAFC;
+  --bg-purple: #F5F3FF;
+  --text-primary: #1E293B;
+  --text-secondary: #64748B;
+  --border: #E2E8F0;
+}
+
+/* ===== UTILITIES ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.gradient-text {
+  background: linear-gradient(135deg, var(--purple), var(--green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--purple);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+.section-subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 48px;
+}
+
+/* ===== SECTION 1: NAV ===== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+.nav-logo span { color: var(--purple); }
+.nav-cta {
+  display: inline-block;
+  padding: 10px 24px;
+  background: var(--purple);
+  color: #fff;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  border: none;
+}
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(124,58,237,0.3);
+}
+
+/* ===== SECTION 2: HERO ===== */
+.hero {
+  background: #FFFFFF;
+  background-image: radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.08) 0%, transparent 70%);
+  padding: 80px 0 64px;
+  text-align: center;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-purple);
+  color: var(--purple);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+.hero-badge .dot {
+  width: 8px; height: 8px;
+  background: var(--purple);
+  border-radius: 50%;
+  display: inline-block;
+}
+.hero h1 {
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-sub {
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+.search-box {
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-box:focus-within {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 4px rgba(124,58,237,0.1);
+}
+.search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 16px 20px;
+  font-size: 16px;
+  font-family: inherit;
+  background: transparent;
+  min-width: 0;
+}
+.search-box input::placeholder { color: #94A3B8; }
+.search-btn {
+  background: linear-gradient(135deg, var(--purple), var(--green));
+  color: #fff;
+  border: none;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.search-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(124,58,237,0.3);
+}
+
+/* ===== SECTION 3: DISCOUNT ===== */
+.discount {
+  padding: 48px 0;
+  background: var(--bg-white);
+}
+.discount-card {
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--bg-purple);
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.discount-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--purple), var(--green));
+}
+.discount-label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+.discount-code {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--purple), var(--green));
+  color: #fff;
+  font-size: 24px;
+  font-weight: 800;
+  padding: 12px 32px;
+  border-radius: 100px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: none;
+  font-family: inherit;
+  letter-spacing: 2px;
+  position: relative;
+}
+.discount-code:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+}
+.discount-code .copy-icon { font-size: 18px; }
+.discount-price {
+  font-size: 18px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+.discount-price .price {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--green);
+}
+.discount-price .original {
+  color: var(--text-secondary);
+  text-decoration: line-through;
+  font-size: 16px;
+  margin-left: 8px;
+}
+
+/* ===== SECTION 4: WHY CUSTOM DOMAIN ===== */
+.why {
+  padding: 80px 0;
+  background: var(--bg-white);
+  text-align: center;
+}
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 28px;
+  text-align: left;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.card:hover {
+  border-color: var(--purple);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(124,58,237,0.1);
+}
+.card-icon {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+.card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+.card p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ===== SECTION 5: BEFORE/AFTER ===== */
+.compare {
+  padding: 80px 0;
+  background: var(--bg-light);
+  text-align: center;
+}
+.browser-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 900px;
+  margin: 48px auto 0;
+}
+.browser-mockup {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  position: relative;
+}
+.browser-mockup.after {
+  box-shadow: 0 4px 32px rgba(124,58,237,0.15), 0 0 60px rgba(124,58,237,0.08);
+}
+.browser-topbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #F1F5F9;
+  border-bottom: 1px solid var(--border);
+}
+.browser-dots {
+  display: flex;
+  gap: 6px;
+}
+.browser-dots span {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  display: block;
+}
+.browser-dots span:nth-child(1) { background: #EF4444; }
+.browser-dots span:nth-child(2) { background: #F59E0B; }
+.browser-dots span:nth-child(3) { background: #22C55E; }
+.browser-url {
+  flex: 1;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.browser-body {
+  padding: 48px 24px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.browser-body .site-name {
+  font-size: 24px;
+  font-weight: 800;
+}
+.browser-body .site-tagline {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+.browser-mockup.after .site-name {
+  background: linear-gradient(135deg, var(--purple), var(--green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.browser-note {
+  margin-top: 16px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.browser-note.highlight {
+  color: var(--purple);
+  font-weight: 700;
+}
+
+/* ===== SECTION 6: FOR CREATORS ===== */
+.creators {
+  padding: 80px 0;
+  background: var(--bg-white);
+  text-align: center;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 48px auto 0;
+}
+.feature-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 28px;
+  text-align: left;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.feature-card:hover {
+  border-color: var(--purple);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(124,58,237,0.1);
+}
+.feature-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  background: linear-gradient(135deg, var(--purple), var(--green));
+  color: #fff;
+  font-size: 18px;
+  font-weight: 800;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+.feature-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+.feature-card p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ===== SECTION 7: COMPARISON TABLE ===== */
+.comparison {
+  padding: 80px 0;
+  background: var(--bg-light);
+  text-align: center;
+}
+.comparison-table {
+  max-width: 700px;
+  margin: 48px auto 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+.comparison-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.comparison-table th,
+.comparison-table td {
+  padding: 16px 20px;
+  text-align: center;
+  font-size: 15px;
+  border-bottom: 1px solid var(--border);
+}
+.comparison-table th {
+  background: var(--bg-light);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+.comparison-table th:first-child,
+.comparison-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+}
+.comparison-table tr:last-child td { border-bottom: none; }
+.badge-rec {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--purple), var(--green));
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 100px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+.check { color: var(--green); font-weight: 700; }
+.cross { color: #CBD5E1; }
+.partial { color: var(--text-secondary); font-size: 14px; }
+
+/* ===== SECTION 8: STEPS ===== */
+.steps {
+  padding: 80px 0;
+  background: var(--bg-white);
+  text-align: center;
+}
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 48px auto 0;
+  position: relative;
+}
+.steps-grid::before {
+  content: '';
+  position: absolute;
+  top: 32px;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  border-top: 2px dashed var(--border);
+  z-index: 0;
+}
+.step {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px; height: 64px;
+  background: linear-gradient(135deg, var(--purple), var(--green));
+  color: #fff;
+  font-size: 24px;
+  font-weight: 900;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+.step h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.step p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+/* ===== SECTION 9: FINAL CTA ===== */
+.final-cta {
+  padding: 80px 0;
+  background: var(--bg-purple);
+  text-align: center;
+  position: relative;
+}
+.final-cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--purple), var(--green));
+}
+.final-cta h2 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+.final-cta .cta-sub {
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+.final-cta .cta-sub .code { color: var(--green); font-weight: 700; }
+.final-cta .cta-note {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* ===== SECTION 10: FOOTER ===== */
+.footer {
+  padding: 32px 0;
+  background: var(--bg-white);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1023px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid::before { display: none; }
+  .hero h1 { font-size: 36px; }
+  .section-title { font-size: 30px; }
+}
+@media (max-width: 767px) {
+  .hero { padding: 48px 0 40px; }
+  .hero h1 { font-size: 28px; }
+  .hero-sub { font-size: 16px; }
+  .section-title { font-size: 26px; }
+  .section-subtitle { font-size: 16px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .browser-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .steps-grid::before { display: none; }
+  .search-box {
+    flex-direction: column;
+    border-radius: 12px;
+  }
+  .search-box input {
+    border-bottom: 1px solid var(--border);
+    padding: 14px 16px;
+  }
+  .search-btn {
+    padding: 14px;
+    border-radius: 0;
+  }
+  .discount-card { padding: 28px 20px; }
+  .discount-code { font-size: 20px; padding: 10px 24px; }
+  .discount-price .price { font-size: 28px; }
+  .nav-logo { font-size: 16px; }
+  .comparison-table th,
+  .comparison-table td { padding: 12px 10px; font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Section 1: Nav Bar -->
+<nav class="nav" id="navbar">
+  <div class="container nav-inner">
+    <div class="nav-logo">Portaly <span>×</span> lihi.io</div>
+    <a href="#hero-search" class="nav-cta">立即查詢網域</a>
+  </div>
+</nav>
+
+<!-- Section 2: Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge"><span class="dot"></span> Portaly 創作者專屬</div>
+    <h1>你的品牌頁面，值得一個<span class="gradient-text">專屬網域</span></h1>
+    <p class="hero-sub">從 portaly.cc/yourname 升級到 yourname.tw｜讓粉絲記住你，不是記住平台</p>
+    <form class="search-box" id="hero-search" action="https://app.lihi.io/admin/searchDomain" method="GET">
+      <input type="hidden" name="p" value="portaly">
+      <input type="text" name="q" placeholder="輸入你想要的品牌域名，例如 beckvegas" required>
+      <button type="submit" class="search-btn">查詢網域</button>
+    </form>
+  </div>
+</section>
+
+<!-- Section 3: Discount -->
+<section class="discount">
+  <div class="container">
+    <div class="discount-card">
+      <div class="discount-label">🏷️ Portaly 創作者限定</div>
+      <button class="discount-code" id="copyCode" onclick="copyDiscount()">
+        PT99 <span class="copy-icon">📋</span>
+      </button>
+      <div class="discount-price">
+        .tw / .com.tw 網域，第一年只要 <span class="price">$99</span>
+        <span class="original">$899</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 4: Why Custom Domain -->
+<section class="why">
+  <div class="container">
+    <div class="section-label">WHY CUSTOM DOMAIN</div>
+    <h2 class="section-title">自訂網域，品牌升級的第一步</h2>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">👑</div>
+        <h3>品牌辨識度飆升</h3>
+        <p>yourname.tw 比 portaly.cc/yourname 更好記、更專業。品牌合作邀約看到自訂網域，信任度直接拉滿。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <h3>SEO 搜尋加分</h3>
+        <p>自有網域在搜尋引擎的權重更高。粉絲搜你的名字，直接找到你，不被其他創作者稀釋流量。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛡️</div>
+        <h3>你的流量你作主</h3>
+        <p>平台可能改規則，但網域是你的資產。不管未來用什麼工具，網域跟著你走，粉絲永遠找得到你。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 5: Before/After Compare -->
+<section class="compare">
+  <div class="container">
+    <div class="section-label">BEFORE & AFTER</div>
+    <h2 class="section-title">品牌升級前後對比</h2>
+    <div class="browser-grid">
+      <!-- Before -->
+      <div>
+        <div class="browser-mockup">
+          <div class="browser-topbar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">portaly.cc/beckvegas</div>
+          </div>
+          <div class="browser-body">
+            <div class="site-name">beckvegas</div>
+            <div class="site-tagline">portaly.cc/beckvegas</div>
+          </div>
+        </div>
+        <div class="browser-note">升級前 — 看起來像平台用戶</div>
+      </div>
+      <!-- After -->
+      <div>
+        <div class="browser-mockup after">
+          <div class="browser-topbar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">beckvegas.tw</div>
+          </div>
+          <div class="browser-body">
+            <div class="site-name">beckvegas</div>
+            <div class="site-tagline">beckvegas.tw</div>
+          </div>
+        </div>
+        <div class="browser-note highlight">升級後 — 看起來像品牌官網 ✨</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 6: For Portaly Creators -->
+<section class="creators">
+  <div class="container">
+    <div class="section-label">FOR PORTALY CREATORS</div>
+    <h2 class="section-title">專為 Portaly 創作者設計</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-num">①</div>
+        <h3>一鍵綁定 Portaly 頁面</h3>
+        <p>購買後直接在 Portaly 後台設定自訂網域，不用懂技術，3 分鐘搞定</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">②</div>
+        <h3>行銷工具一起用</h3>
+        <p>lihi 的短網址、AB 測試、UTM 追蹤，搭配 Portaly 的頁面，數據更清楚</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">③</div>
+        <h3>可開統編發票</h3>
+        <p>接品牌合作需要報帳？lihi 提供台灣正式發票，費用核銷不用煩</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">④</div>
+        <h3>在地團隊即時支援</h3>
+        <p>台灣團隊、中文客服，有問題不用翻牆找英文文件，真人快速回覆</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 7: Comparison Table -->
+<section class="comparison">
+  <div class="container">
+    <div class="section-label">COMPARISON</div>
+    <h2 class="section-title">為什麼在 lihi 買？</h2>
+    <p class="section-subtitle">跟其他網域商比一比</p>
+    <div class="comparison-table">
+      <table>
+        <thead>
+          <tr>
+            <th>功能</th>
+            <th>lihi.io <span class="badge-rec">推薦</span></th>
+            <th>其他</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Portaly 一鍵綁定</td>
+            <td class="check">✓</td>
+            <td class="cross">✗</td>
+          </tr>
+          <tr>
+            <td>中文介面 & 客服</td>
+            <td class="check">✓</td>
+            <td class="partial">部分</td>
+          </tr>
+          <tr>
+            <td>台灣發票</td>
+            <td class="check">✓</td>
+            <td class="cross">✗</td>
+          </tr>
+          <tr>
+            <td>行銷工具整合</td>
+            <td class="check">✓</td>
+            <td class="cross">✗</td>
+          </tr>
+          <tr>
+            <td>.tw 首年價格</td>
+            <td class="check">$99</td>
+            <td class="partial">$800+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Section 8: Steps -->
+<section class="steps">
+  <div class="container">
+    <div class="section-label">HOW IT WORKS</div>
+    <h2 class="section-title">三步驟，品牌網域上線</h2>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>搜尋網域</h3>
+        <p>輸入你的品牌名，查看可用網域</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>結帳付款</h3>
+        <p>輸入折扣碼 PT99，完成付款</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>綁定 Portaly</h3>
+        <p>到 Portaly 後台，設定自訂網域</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 9: Final CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>準備好升級你的品牌了嗎？</h2>
+    <p class="cta-sub">使用折扣碼 <span class="code">PT99</span>，.tw 網域首年只要 $99</p>
+    <form class="search-box" action="https://app.lihi.io/admin/searchDomain" method="GET" style="max-width:600px;margin:0 auto;">
+      <input type="hidden" name="p" value="portaly">
+      <input type="text" name="q" placeholder="輸入你想要的品牌域名" required>
+      <button type="submit" class="search-btn">查詢網域</button>
+    </form>
+    <p class="cta-note">支援 .tw / .com.tw / .com 等熱門網域</p>
+  </div>
+</section>
+
+<!-- Section 10: Footer -->
+<footer class="footer">
+  <div class="container">
+    © 2025 Portaly × lihi.io ｜ 網域服務由 lihi.io 提供
+  </div>
+</footer>
+
+<script>
+function copyDiscount() {
+  navigator.clipboard.writeText('PT99').then(function() {
+    var btn = document.getElementById('copyCode');
+    btn.innerHTML = '已複製 ✓';
+    btn.style.opacity = '0.9';
+    setTimeout(function() {
+      btn.innerHTML = 'PT99 <span class="copy-icon">📋</span>';
+      btn.style.opacity = '1';
+    }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>
